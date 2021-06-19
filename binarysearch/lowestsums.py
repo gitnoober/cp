@@ -25,5 +25,3 @@ for _ in range(int(input())):
 		d[cur]=x
 		cur+=1
 	[print(d[i]) for i in queries]
-
-
