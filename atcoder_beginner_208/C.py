@@ -1,4 +1,3 @@
-
 import os , sys,time, collections , math , pprint , itertools as it , operator as op , bisect as bs ,functools as fn
 maxx , localsys , mod = float('inf'), 0 , int(1e9 + 7) 
 nCr = lambda n, r: reduce(mul, range(n - r + 1, n + 1), 1) // factorial(r)
@@ -11,19 +10,23 @@ input = sys.stdin.readline
 
 def maps():return map(int , input().split())
 
-#think about the edge cases 
-
-for _ in range(int(input())):
-	n , m = maps() ; a = sorted(maps() , reverse=True) ; b = list(maps()) ; ans =0
-	j = 0
-	for i in a:
-		if i >= j+1 and j < n:
-			if b[i-1] <= b[j]:
-				ans+=b[i-1]
-			else:
-				ans+=b[j] ; j+=1
+#THINK ABOUT THE EDGE CASES ..........
+n , k = maps() ; a = list(maps())
+common = k//n ; left = k - common*n
+d = {i:a[i] for i in range(n)} ; a.sort()
+ok = True
+if n == left:
+	ok = False
+for i in range(n):
+	if ok:
+		#a[i] < a[left]
+		if d[i] < a[left]:
+			print(common+1)
 		else:
-			ans+=b[i-1]
-	print(ans)
-
+			print(common)
+	else:
+		if d[i] <= a[left]:
+			print(common+1)
+		else:
+			print(common)
 

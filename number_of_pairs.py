@@ -11,19 +11,13 @@ input = sys.stdin.readline
 
 def maps():return map(int , input().split())
 
-#think about the edge cases 
-
 for _ in range(int(input())):
-	n , m = maps() ; a = sorted(maps() , reverse=True) ; b = list(maps()) ; ans =0
-	j = 0
-	for i in a:
-		if i >= j+1 and j < n:
-			if b[i-1] <= b[j]:
-				ans+=b[i-1]
-			else:
-				ans+=b[j] ; j+=1
-		else:
-			ans+=b[i-1]
+	n ,l, r =maps()
+	a,ans =sorted(maps()),0
+	for i in range(n):
+		ans +=  bs.bisect_right(a, r -a[i] , lo= i+1 , hi = n) - bs.bisect_left(a, abs(a[i]- l) , lo = i+1 , hi=n)
 	print(ans)
-
-
+"""
+[L, R] -- i+1 <= L <= n and i +1 <= R <= n
+in between are the elements that could pair up with  l <= s <= r
+"""

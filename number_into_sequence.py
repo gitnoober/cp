@@ -14,16 +14,15 @@ def maps():return map(int , input().split())
 #think about the edge cases 
 
 for _ in range(int(input())):
-	n , m = maps() ; a = sorted(maps() , reverse=True) ; b = list(maps()) ; ans =0
-	j = 0
-	for i in a:
-		if i >= j+1 and j < n:
-			if b[i-1] <= b[j]:
-				ans+=b[i-1]
-			else:
-				ans+=b[j] ; j+=1
-		else:
-			ans+=b[i-1]
-	print(ans)
-
+	n = int(input()) ; m = n ; mx = 1
+	for i in range(2 , int(math.sqrt(n))+1):
+		tp =0
+		while n % i ==0 :
+			n//=i ; tp+=1 
+		if tp > mx:
+			mx = tp ; x = i
+	print(mx)
+	for i in range(mx - 1):
+		m//=x ; print(x , end=' ')
+	print(m)
 

@@ -11,19 +11,26 @@ input = sys.stdin.readline
 
 def maps():return map(int , input().split())
 
-#think about the edge cases 
 
 for _ in range(int(input())):
-	n , m = maps() ; a = sorted(maps() , reverse=True) ; b = list(maps()) ; ans =0
-	j = 0
-	for i in a:
-		if i >= j+1 and j < n:
-			if b[i-1] <= b[j]:
-				ans+=b[i-1]
+	n , k = maps()
+	a = sorted(maps())
+	i = 0 ;ma ,ans = a[-1] , n
+	d = {i:1 for i in a}
+	for j in range(n):
+		if k :
+			if a[j] == i :
+				i+=1
+				continue
+			x =math.ceil((i+ma)/2) 
+			if x != i:
+				k=0
+				if x not in d:
+					d[x]=1 ; ans+=1
+				break
 			else:
-				ans+=b[j] ; j+=1
-		else:
-			ans+=b[i-1]
-	print(ans)
+				ans+=1
+				i+=1 ; k-=1
+	print(k+ans)
 
 

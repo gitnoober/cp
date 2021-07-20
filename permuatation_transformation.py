@@ -11,19 +11,17 @@ input = sys.stdin.readline
 
 def maps():return map(int , input().split())
 
-#think about the edge cases 
+def recur(a , level,ans ):
+	if not a:
+		return
+	m = max(a)
+	if m :
+		ans[m]=level ; idx = a.index(m)
+		recur(a[:idx], level+1, ans) ;recur(a[idx+1:], level+1, ans)
+	else:return
+
 
 for _ in range(int(input())):
-	n , m = maps() ; a = sorted(maps() , reverse=True) ; b = list(maps()) ; ans =0
-	j = 0
-	for i in a:
-		if i >= j+1 and j < n:
-			if b[i-1] <= b[j]:
-				ans+=b[i-1]
-			else:
-				ans+=b[j] ; j+=1
-		else:
-			ans+=b[i-1]
-	print(ans)
-
-
+	n = int(input()) ; a =list(maps()) ;ans = {}
+	recur(a, 0, ans)
+	print(*[ans[a[i]] for i in range(n)])

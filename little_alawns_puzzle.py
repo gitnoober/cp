@@ -10,20 +10,13 @@ if os.path.exists(osi):
 input = sys.stdin.readline
 
 def maps():return map(int , input().split())
-
-#think about the edge cases 
+sys.setrecursionlimit(500000)
 
 for _ in range(int(input())):
-	n , m = maps() ; a = sorted(maps() , reverse=True) ; b = list(maps()) ; ans =0
-	j = 0
-	for i in a:
-		if i >= j+1 and j < n:
-			if b[i-1] <= b[j]:
-				ans+=b[i-1]
-			else:
-				ans+=b[j] ; j+=1
-		else:
-			ans+=b[i-1]
-	print(ans)
-
-
+	n = int(input()) ; a , b = list(maps()) , list(maps())
+	d ,ans = {a[i]:b[i] for i in range(n)} , 0
+	while d:
+		ans +=1 ; k , v = d.popitem()
+		while k != v:
+			v = d.pop(v)
+	print(pow(2 , ans , mod))

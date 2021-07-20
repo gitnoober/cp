@@ -1,6 +1,5 @@
-
 import os , sys,time, collections , math , pprint , itertools as it , operator as op , bisect as bs ,functools as fn
-maxx , localsys , mod = float('inf'), 0 , int(1e9 + 7) 
+maxx , localsys , mod = 1<<60, 0 , int(1e9 + 7) 
 nCr = lambda n, r: reduce(mul, range(n - r + 1, n + 1), 1) // factorial(r)
 ceil = lambda n , x: (n+x -1 )//x 
 osi, oso = '/home/priyanshu/Documents/cp/input.txt','/home/priyanshu/Documents/cp/output.txt'
@@ -11,19 +10,22 @@ input = sys.stdin.readline
 
 def maps():return map(int , input().split())
 
-#think about the edge cases 
-
+#THINK ABOUT THE EDGE CASES ..........
 for _ in range(int(input())):
-	n , m = maps() ; a = sorted(maps() , reverse=True) ; b = list(maps()) ; ans =0
-	j = 0
-	for i in a:
-		if i >= j+1 and j < n:
-			if b[i-1] <= b[j]:
-				ans+=b[i-1]
-			else:
-				ans+=b[j] ; j+=1
-		else:
-			ans+=b[i-1]
-	print(ans)
+	n , x ,y = maps()
+	if n == 2:print(x ,y) ; continue
+	last = maxx
+	for d in range(51):
+		for X in range(51):
+			for Y in range(51):
+				a1 = x- X*d ; a11 = y - Y*d
+				if a1== a11 and a1 >0:
+					t = a1+(n-1)*d
+					if t >= y and t < last:
+						last,A,D =t ,a1 ,d
+	ans =[A]
+	for i in range(1,n):
+		ans.append(ans[-1]+D)
+	print(*ans)
 
 
