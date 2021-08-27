@@ -1,113 +1,295 @@
-import os , sys,time, collections , math , pprint , itertools as it , operator as op , bisect as bs ,functools as fn
-maxx , localsys , mod = 1<<60, 0 , int(1e9 + 7) 
-nCr = lambda n, r: reduce(mul, range(n - r + 1, n + 1), 1) // factorial(r)
-ceil = lambda n , x: (n+x -1 )//x 
-osi, oso = '/home/priyanshu/Documents/cp/input.txt','/home/priyanshu/Documents/cp/output.txt'
-if os.path.exists(osi):
-	sys.stdin  = open(osi, 'r') ; sys.stdout = open(oso, 'w')
-	
-input = sys.stdin.readline
-from functools import reduce
-def maps():return map(int , input().split())
+import sys
 
-#THINK ABOUT THE EDGE CASES ..........
+def input(): return sys.stdin.readline().rstrip("\r\n")
 
-"""
-for _ in range(int(input())):
-	n = int(input()) ; a = list(maps())
-	pos = n- 1
-	while pos>0 and a[pos-1]>=a[pos]:pos-=1
-	while pos>0 and a[pos-1]<=a[pos]:pos-=1
-	print(pos)
-
-longest suffix which is sorted either increasing or decreasing doesn't matter
-"""
-
-"""
-
-for _ in range(int(input())):
-	n = int (input())
-	t = [98]*51
-	for i in [0] + list(maps()):
-		t[i]^=1
-		print(''.join(map(chr,t)))
-
-"""
-
-"""
-for _ in range(int(input())):
-	n = int(input()) ; a = list(input().rstrip('\n'))
-	i,j =0,n-1
-	while i<n and a[i] =='0':i+=1
-	while j >=0 and a[j] =='1':j-=1
-	for k in range(i,j):
-		a[k] ='-1'
-	print(''.join(list(filter(lambda x : (x!='-1') ,a))))
-trailing 0's + 0(answer of the string b/w the trailing 0's and 1's) and 1's 
-"""
+def maps(): return [int(i) for i in input().split()]
 
 
-def A():
-	for _ in range(int(input())):
-		n , k = maps() ; S = '0'*k + input().rstrip('\n') +'0'*k
-		su = sum(max(0,(len(s)-k)//(k+1)) for s in S.split('1'))
-		print(su)
+def func():
+
+    n, m = maps()
+
+    if n > m + 1 or m > 2 * (n + 1):
+        print(-1)
+
+    else:
+
+        if n == m:  # self - explanatory
+            print('10' * n)
+
+        elif n == m + 1:  # self - explanatory
+            print('01' * m + '0')
+
+        elif 2 * n + 2 == m:  # special case
+            print('110' * n + '11')
+        else:
+            t = m - n - 1  # '110'*t -- make the m as close to n , now m = n+1 is left
+            print('110' * t + '10' * (n - t) + '1')
 
 
+class Seq:
 
-def B():
-	for _ in range(int(input())):
-		n = int(input()) ; a = list(maps()) ;ans =[]
-		for i in range(n):
-			if i ==0 or i == n-1 or ((a[i-1] < a[i])!=(a[i] < a[i+1])):
-				ans.append(a[i])
-		print(len(ans)) ; print(*ans)
+    def calc(self, s):
+        S = str(s)
+        return s + int(max(S)) * int(min(S))
 
-def C():
-	for _ in range(int(input())):
-		n , x =maps() ; a= list(maps()) ; e =o=0
-		for i in a:e , o = (e ,o+1) if i %2 else (e+1 ,o)
-		if o ==0:print('No') ; continue
-		print('Yes') if (x % 2 and ( ( o % 2 ) or (o%2 ==0 and o-1 >=x))) else print('No') if e ==0 else (print('Yes') if (e%2 and e + (o - (1 if o%2==0 else 0)) >=x) or (o>=x) else print('Yes') if (e + (o - (0 if o%2 else 1)) >=x) or ((e -1) +o>=x) else print('No')) if x %2 else print('Yes') if (e % 2 and o % 2 ) or (o %2 ==0 and o + (e - (1 if e%2==0 else 0)) >=x) or (e %2 ==0 and e + (o - (1 if o%2==0 else 0)) >=x) else print('No')
-
-def D():
-	n , m = maps()
-	if n == m:
-		print(0),exit()
-	ans = 0
-	while m!=n:
-		if m < n:
-			ans+= (n-m) ; break
-		else:
-			if m % 2==0:
-				m//=2
-			else:
-				m+=1
-			ans+=1
-	print(ans)
-	"""
-	make the question in another way, that is if we start from m how can we get to n ,
-	if we apply "divide by 2" and "add 1 " operations ,if m is even we divide by 2 and if it's odd we add one
-	that only if m > n else all we need to do is add m-n
-	"""
+    def solve(self):
+        for _ in range(*maps()):
+            a, k = maps()
+            k -= 1
+            prev = 0
+            while k and a - prev:
+                k -= 1
+                prev = a
+                a = calc(a)
+            print(a)
 
 
-def E():
-	n , t = maps() ;a = list(maps())
-	ans = s = idx = 0
-	for i in a:
-		s+=i
-		if s > t:
-			s-=a[idx]
-			idx+=1
-	print(n-idx)
+from _collections import defaultdict, OrderedDict
+
+class Young:
+
+    def solve(self):
+
+        for _ in range(*maps()):
+            n, = maps()
+            a = [*maps()]
+            dic = defaultdict(int)
+            gr = 0
+            for i in a:
+                dic[i] += 1
+
+            # print(dic,"bef")
+
+            for i in dic:
+                x = dic[i] // i
+                gr += x
+                dic[i] -= x * i
+
+            # print(dic,gr)
+
+            rem = []
+            for i in dic:
+                while dic[i]:
+                    rem.append(i)
+                    dic[i] -= 1
+
+            rem.sort()
+            # print(rem,gr)
+
+            i = 0
+            mx = 0
+            dis = 0
+            while i < len(rem):
+                dis += 1
+                mx = max(mx, rem[i])
+                if mx <= dis:
+                    gr += 1
+                    dis = 0
+                i += 1
+
+            print(gr)
 
 
-def F():
-	n , m = maps()
-	t =n-m +1; kmax = t*(t-1)//2
-	x = n//m
-	print(m*x*(x-1)//2 + x*(n%m), kmax)
+class Johnny:
+
+    def solve(self):
+        for _ in range(*maps()):
+            n, = maps()
+            a = [*maps()]
+            diff = [0] * n
+            cc = 0
+            for i in range(n):
+                if i + 1 != a[i]:
+                    cc += 1
+                    diff[i] = 1
+            if cc == n:
+                print(1)
+            elif cc == 0:
+                print(0)
+            else:
+                diff = ''.join(map(str, diff)).split('0')
+
+                x = sum([1 if len(i) else 0 for i in diff])
+                print(min(2, x))
 
 
-F()
+def applejack():
+
+    n, = maps()
+    a = [*maps()]
+    q, = maps()
+    d = defaultdict(int)
+    cnt1, cnt2 = 0, 0
+
+    for i in a:
+        d[i] += 1
+
+    for i in d:
+        cnt1 += d[i] // 4  # squares
+        cnt2 += (d[i] % 4) // 2  # recs each parallel side
+
+    for i in range(q):
+        s, x = input().split()
+        x = int(x)
+        f = d[x]
+        if s == '+':
+            d[x] += 1
+            if f % 4 == 1:
+                cnt2 += 1
+            elif f % 4 == 3:
+                cnt1 += 1
+                cnt2 -= 1
+
+        else:
+            d[x] -= 1
+            if f % 4 == 0:
+                cnt1 -= 1
+                cnt2 += 1
+            elif f % 4 == 2:
+                cnt2 -= 1
+
+        if cnt1 > 1 or (cnt1 and cnt2 > 1):
+            print('YES')
+        else:
+            print('NO')
+
+    # An alternative solution is using heaps
+
+
+def perform_the_combo():
+    for _ in range(*maps()):
+        n, m = maps()
+        s = input()
+        p = [*maps()]
+
+        arr = []
+        temp = [0] * 26
+
+        for i in range(n):
+            temp[ord(s[i]) - 97] += 1
+            temp1 = temp[:]
+            arr.append(temp1)
+
+        ans = arr[-1]
+
+        for i in range(m):
+            for j in range(26):
+                ans[j] += arr[p[i] - 1][j]
+
+        print(*ans)
+    # another way to it is by sorting the array p and counting how many times it will occur in ans
+
+
+def perm_partitions():
+    n, k = maps()
+    a = [(i, j) for i, j in enumerate(maps())]
+    a.sort(key=lambda x: x[1], reverse=True)
+    pos = []
+    mod = 998244353
+    p = 0
+    for i in range(k):
+        pos.append(a[i][0])
+        p += a[i][1]
+    pos.sort()
+    ans = 1
+    for i in range(k - 1):
+        ans *= pos[i + 1] - pos[i]
+        ans %= mod
+        # print(pos[i+1] - pos[i])
+    print(p, ans)
+
+
+def find(x, par):
+    if x == par[x]:
+        return x
+    par[x] = find(par[x], par)
+    return par[x]
+
+
+def union(x, y, par):
+    x, y = find(x, par), find(y, par)
+    if x != y:
+        par[x] = y
+
+
+def languages():
+
+    n, m = maps()
+    l = [set([*maps()][1:]) for i in range(n)]
+    if all(not len(i) for i in l):
+        print(n)
+        return
+
+    par = list(range(n))
+
+    for i in range(n):
+        for j in l[i]:
+            for k in range(n):
+                if j in l[k]:
+                    union(i, k, par)
+
+    print(len(set(find(x, par) for x in par)) - 1)
+
+
+from math import sqrt, ceil
+
+
+def search(arr, key):
+    l, h = 0, len(arr) - 1
+    idx = -1
+    while l <= h:
+        m = (l + h) >> 1
+
+        if arr[m] <= key:
+            idx = m
+            l = m + 1
+        else:
+            h = m - 1
+
+    return idx
+
+
+def pytriples():
+
+    sq = []
+    for i in range(3, 32000, 2):
+        x = i * i
+        y = sqrt(x)
+
+        if y == i:
+            sq.append(i * i)
+
+        if x > 10**9:
+            break
+    prev = None
+    ch = [0] * (10**9)
+    for _ in range(*maps()):
+        n, = maps()
+        ans = 0
+
+        K = sqrt(n)
+        I = K
+        mi = (I * I) + (I * I)
+
+        for k in range(search(sq, mi) + 1):
+            p = sq[k]
+            a = ceil(p / 2)
+            b = p // 2
+            i = int(sqrt(p))
+
+            if b > n:
+                break
+
+            if a != b and a <= n and b <= n and i <= n:
+                ans += 1
+            # ch
+
+        if prev == None:
+            prev = ans
+        if prev != ans:
+            print(_, prev, ans)
+        prev = ans
+
+
+pytriples()
