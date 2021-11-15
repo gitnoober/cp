@@ -1,5 +1,4 @@
 
-
 class DisjointSetUnion:
     def __init__(self, n):
         self.n = n
@@ -32,19 +31,36 @@ class DisjointSetUnion:
         return self.numsets
 
 
-class UnionFind:
-    def __init__(self, n):
-        self.parent = [i for i in range(n)]
-        self.n = n
+class Solution:
+    # def friendRequests(self, n: int, restrictions: List[List[int]], requests: List[List[int]]) -> List[bool]:
+    def friendRequests(self, n, restrictions, requests):
+        dsu = DisjointSetUnion(n + 1)
+        ans = []
 
-    def find(self, x):
-        xcopy = x
-        while self.parent[x] != x:
-            x = self.parent[x]
-        while x != xcopy:
-            self.parent[xcopy], xcopy = x, self.parent[xcopy]
+        for x, y in requests:
+            u, v = dsu.find(x), dsu.find(y)
 
-        return x
+            ok = True
 
-    def union(self, x, y):
-        self.parent[self.find(x)] = self.find(y)
+            for a, b in restrictions:
+                u1, v1 = dsu.find(a), dsu.find(b)
+
+                if set([u1, v1]) == set([u, v]):
+                    ok = False
+                    break
+
+            ans.append(ok)
+            if ok:
+                dsu.union(x, y)
+
+        return ans
+
+
+n = 7
+restrictions = [[0, 6], [6, 2]]
+requests = [[0, 2], [2, 3], [0, 2], [6, 4], [6, 4]]
+
+
+ob = Solution()
+x = ob.friendRequests(n, restrictions, requests)
+print(x)

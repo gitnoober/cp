@@ -10,17 +10,17 @@ import collections
 
 
 def solve():
+    mod = 1000000009
+    maxn = 10**6 + 5
+    dp = array.array('i', [0 for i in range(maxn + 1)])
+    dp[0] = 1
+    for i in range(maxn):
+        dp[i] += dp[i - 2] + dp[i - 3]
+        dp[i] %= mod
 
     for _ in range(*maps()):
         n, = maps()
-        a = list(maps())
-        cnt = [0] * 61
-        for i in range(61):
-            bit = (1 << i)
-            for j in a:
-                if bit & j:
-                    cnt[i] += 1
-        debug("cnt", cnt[:6][::-1])
+        print(dp[n])
 
 
 if __name__ == '__main__':

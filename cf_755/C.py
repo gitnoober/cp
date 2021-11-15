@@ -13,14 +13,19 @@ def solve():
 
     for _ in range(*maps()):
         n, = maps()
-        a = list(maps())
-        cnt = [0] * 61
-        for i in range(61):
-            bit = (1 << i)
-            for j in a:
-                if bit & j:
-                    cnt[i] += 1
-        debug("cnt", cnt[:6][::-1])
+        a = sorted(maps())
+        b = sorted(maps())
+
+        mx = -inf
+        mi = inf
+
+        for i in range(n):
+            mx = max(mx, b[i] - a[i])
+            mi = min(mi, b[i] - a[i])
+        if mi >= 0 and mx <= 1:
+            print("YES")
+        else:
+            print("NO")
 
 
 if __name__ == '__main__':

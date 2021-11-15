@@ -9,18 +9,28 @@ import collections
 # sys.setrecursionlimit(10 ** 9)
 
 
-def solve():
+def naive(arr):
+    n = len(arr)
+    cnt = 0
+    for i in range(n):
+        for j in range(i, n + 1):
+            x = arr[i:j]
+            if len(x) and sorted(x) == x:
+                cnt += 1
+    return cnt
 
+
+def solve():
     for _ in range(*maps()):
         n, = maps()
         a = list(maps())
-        cnt = [0] * 61
-        for i in range(61):
-            bit = (1 << i)
-            for j in a:
-                if bit & j:
-                    cnt[i] += 1
-        debug("cnt", cnt[:6][::-1])
+        dp = [1] * n
+        for i in range(n - 1):
+            if a[i + 1] >= a[i]:
+                dp[i + 1] = dp[i] + 1
+
+        ans = sum(dp)
+        print(ans)
 
 
 if __name__ == '__main__':

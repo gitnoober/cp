@@ -3,7 +3,7 @@ import sys
 import time
 import itertools as it
 import random
-osi, oso = '/home/priyanshu/Documents/cp/input.txt', '/home/priyanshu/Documents/cp/output.txt'
+osi, oso = '/home/ps/Documents/cp/input.txt', '/home/ps/Documents/cp/output.txt'
 if os.path.exists(osi):
     # sys.stdin = open(osi, 'r')
     sys.stdout = open(osi, 'w')
@@ -64,22 +64,17 @@ def showallsubsequences(n, s):
 
 
 def gaurd():
-    # print('choco' * 100000)
+    tc = 100
+    # print(tc)
+    n = 5
+    s = 'abcdefghijklmnopqrstuvwxyz'
+    while tc:
+        tc -= 1
+        ss = []
+        for i in range(n):
+            ss.append(random.randint(-10, 10))
 
-    t = 1000
-    print(t)
-    g = 1
-    for _ in range(t):
-        print(g)
-        g += 1
-
-    #     n = random.randint(1, 100000)
-    #     m = random.randint(1, n + 1000)
-    #     print(n, m)
-    #     for i in range(m):
-    #         a = random.randint(1, n)
-    #         b = random.randint(1, n)
-    #         print(a, b)
+        print(*ss)
 
 
 if __name__ == '__main__':

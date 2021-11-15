@@ -10,17 +10,15 @@ import collections
 
 
 def solve():
-
     for _ in range(*maps()):
-        n, = maps()
-        a = list(maps())
-        cnt = [0] * 61
-        for i in range(61):
-            bit = (1 << i)
-            for j in a:
-                if bit & j:
-                    cnt[i] += 1
-        debug("cnt", cnt[:6][::-1])
+        a1, a2, a3 = maps()
+        if a1 + a3 == 2 * a2:
+            print(0)
+            continue
+
+        s = ((a1 + a3) - (2 * a2)) % 3
+        ans = s
+        print(min(ans, 1))
 
 
 if __name__ == '__main__':
