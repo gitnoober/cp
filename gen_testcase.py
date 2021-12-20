@@ -1,13 +1,40 @@
+import itertools as it
 import os
+import random
 import sys
 import time
-import itertools as it
-import random
 osi, oso = '/home/ps/Documents/cp/input.txt', '/home/ps/Documents/cp/output.txt'
 if os.path.exists(osi):
     # sys.stdin = open(osi, 'r')
     sys.stdout = open(osi, 'w')
 
+
+def prime_sieve(n):
+    """returns a sieve of primes >= 5 and < n"""
+    flag = n % 6 == 2
+    sieve = bytearray((n // 3 + flag >> 3) + 1)
+    for i in range(1, int(n**0.5) // 3 + 1):
+        if not (sieve[i >> 3] >> (i & 7)) & 1:
+            k = (3 * i + 1) | 1
+            for j in range(k * k // 3, n // 3 + flag, 2 * k):
+                sieve[j >> 3] |= 1 << (j & 7)
+            for j in range(k * (k - 2 * (i & 1) + 4) // 3, n // 3 + flag, 2 * k):
+                sieve[j >> 3] |= 1 << (j & 7)
+    return sieve
+
+
+def prime_list(n):
+    """returns a list of primes <= n"""
+    res = []
+    if n > 1:
+        res.append(2)
+    if n > 2:
+        res.append(3)
+    if n > 4:
+        sieve = prime_sieve(n + 1)
+        res.extend(3 * i + 1 | 1 for i in range(1, (n + 1) // 3 + (n % 6 == 1))
+                   if not (sieve[i >> 3] >> (i & 7)) & 1)
+    return res
 
 # Function to return the next
 # random number
@@ -64,17 +91,14 @@ def showallsubsequences(n, s):
 
 
 def gaurd():
-    tc = 100
-    # print(tc)
-    n = 5
-    s = 'abcdefghijklmnopqrstuvwxyz'
+    tc = 1
+    # s = 'abcdefghijklmnopqrstuvwxyz'
+    xx = []
     while tc:
         tc -= 1
-        ss = []
-        for i in range(n):
-            ss.append(random.randint(-10, 10))
-
-        print(*ss)
+        n = 20
+        print(n)
+        print('y' + 'z' * (n - 1))
 
 
 if __name__ == '__main__':

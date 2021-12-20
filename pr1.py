@@ -1,66 +1,111 @@
 
-class DisjointSetUnion:
-    def __init__(self, n):
-        self.n = n
-        self.parent = list(range(n))
-        self.size = [1] * n
-        self.numsets = n
+import sys
+import pprint
+import logging
+from logging import getLogger
 
-    def find(self, x):
-        xcopy = x
-        while self.parent[x] != x:
-            x = self.parent[x]
-        while xcopy != x:
-            xcopy, self.parent[xcopy] = self.parent[xcopy], x
-        return x
-
-    def union(self, x, y):
-        a, b = self.find(x), self.find(y)
-        if a != b:
-            if self.size[a] < self.size[b]:
-                a, b = b, a
-
-            self.size[a] += self.size[b]  # sz.a > sz.b
-            self.parent[b] = a
-            self.numsets -= 1
-
-    def get_size(self, x):
-        return self.size[self.find(x)]
-
-    def __len__(self, x):  # number of components
-        return self.numsets
+def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
-class Solution:
-    # def friendRequests(self, n: int, restrictions: List[List[int]], requests: List[List[int]]) -> List[bool]:
-    def friendRequests(self, n, restrictions, requests):
-        dsu = DisjointSetUnion(n + 1)
-        ans = []
-
-        for x, y in requests:
-            u, v = dsu.find(x), dsu.find(y)
-
-            ok = True
-
-            for a, b in restrictions:
-                u1, v1 = dsu.find(a), dsu.find(b)
-
-                if set([u1, v1]) == set([u, v]):
-                    ok = False
-                    break
-
-            ans.append(ok)
-            if ok:
-                dsu.union(x, y)
-
-        return ans
+logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+logger = getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
-n = 7
-restrictions = [[0, 6], [6, 2]]
-requests = [[0, 2], [2, 3], [0, 2], [6, 4], [6, 4]]
+def debug(msg, *args):
+    logger.info(f'{msg}={pprint.pformat(args)}')
+
+# 30 MINUTES ATLEAST !!!!
+
+###################################################################################################################
+
+# let's do this by recursion
 
 
-ob = Solution()
-x = ob.friendRequests(n, restrictions, requests)
-print(x)
+def printPattern(t, n):
+    if t == n + 1:
+        return
+
+    for i in range(n - t):
+        print(' ', end=' ')
+
+    for i in range(t + 1):
+        print(i, end=' ')
+
+    for i in range(t - 1, 0, -1):
+        print(i, end=' ')
+
+    print(0)
+
+    printPattern(t + 1, n)
+
+    if t == n:
+        return
+    for i in range(n - t):
+        print(' ', end=' ')
+
+    for i in range(t + 1):
+        print(i, end=' ')
+
+    for i in range(t - 1, 0, -1):
+        print(i, end=' ')
+
+    print(0)
+
+
+def single():
+    return map(int, input().split())
+
+# interior angle of a polygon is defined as angle b/w any two adjacent sides, i.e  180 * (n - 2) // n
+# DON'T LOOK AT TEST CASES !!
+
+
+# from itertools import permutations
+
+def calc(x, y, n, val):
+    return (x + val) >= (y / 100) * n
+
+
+import collections
+
+
+def C():
+    for i in range(int(input())):
+        n, k, x = single()
+        s = input()
+        precnt = 0
+        suffcnt = 0
+        for i in s:
+            if i == '*':
+                suffcnt += 1
+
+        if suffcnt == 0:
+            print(s)
+            continue
+
+        for i in s:
+            if i == '*':
+                precnt += 1
+                suffcnt -= 1
+
+
+# C()
+
+from itertools import permutations
+
+
+def f():
+    s = '***'
+    se = set()
+    k = 2
+    for i in permutations(s):
+        st = ''
+        for j in i:
+            for jj in range(k + 1):
+                st += 'b' * jj
+            se.add(st)
+
+    debug("se", se)
+
+
+f()

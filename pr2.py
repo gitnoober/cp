@@ -1,46 +1,80 @@
+
 import sys
-input = sys.stdin.readline
+import pprint
+import logging
+from logging import getLogger
+
+def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
-def make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):
-    max_n = min(max_n, mod - 1)
-
-    fact, inv_fact = [0] * (max_n + 1), [0] * (max_n + 1)
-    fact[0] = 1
-    for i in range(max_n):
-        fact[i + 1] = fact[i] * (i + 1) % mod
-
-    inv_fact[-1] = pow(fact[-1], mod - 2, mod)
-    for i in reversed(range(max_n)):
-        inv_fact[i] = inv_fact[i + 1] * (i + 1) % mod
-
-    def nCr_mod(n, r):
-        res = 1
-        while n or r:
-            a, b = n % mod, r % mod
-            if a < b:
-                return 0
-            res = res * fact[a] % mod * \
-                inv_fact[b] % mod * inv_fact[a - b] % mod
-            n //= mod
-            r //= mod
-        return res
-
-    return nCr_mod
+logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+logger = getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
-fac = make_nCr_mod()
+def debug(msg, *args):
+    logger.info(f'{msg}={pprint.pformat(args)}')
+
+# 30 MINUTES ATLEAST !!!!
+
+###################################################################################################################
+
+# def make_pretty(func):  # takes in a function as an argument
+
+#     def inner(n):  # adds some functionality to the furction
+#         arr = func(n)
+#         new_arr = [i * i for i in arr]
+#         return new_arr
+
+#     return inner  # returns the function
 
 
-def main():
-    n = int(input())
-    a = list(map(int, input().split()))
+def smart_divide(func):
 
-    print(fac(3, 2))
+    def inner(a, b):
+        if b == 0:
+            print("Not possible")
+            return
+
+        print(func(a, b))
+
+    return inner
 
 
-if __name__ == '__main__':
-    tc = int(input())
-    while tc:
-        tc -= 1
-        main()
+@smart_divide
+def divide(a, b):
+    return a / b
+
+
+# using property class
+class Celsius:
+    def __init__(self, temperature=0):
+        self.temperature = temperature
+
+    def to_fahrenheit(self):
+        return (self.temperature * 1.8) + 32
+
+    # getter
+    def get_temperature(self):
+        print("Getting value...")
+        return self._temperature
+
+    # setter
+    def set_temperature(self, value):
+        print("Setting value...")
+        if value < -273.15:
+            raise ValueError("Temperature below -273.15 is not possible")
+        self._temperature = value
+
+    # creating a property object
+
+    temperature = property(get_temperature, set_temperature)
+
+
+human = Celsius(37)
+
+# print(human.temperature)
+
+# print(human.to_fahrenheit())
+
+# human.temperature = -300
