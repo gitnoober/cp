@@ -1,111 +1,58 @@
 
-import sys
-import pprint
-import logging
-from logging import getLogger
+# import sys
+# import pprint
+# import logging
+# from logging import getLogger
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
-
-
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
-logger = getLogger(__name__)
-logger.setLevel(logging.INFO)
+# def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
-def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
-
-# 30 MINUTES ATLEAST !!!!
-
-###################################################################################################################
-
-# let's do this by recursion
+# logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+# logger = getLogger(__name__)
+# logger.setLevel(logging.INFO)
 
 
-def printPattern(t, n):
-    if t == n + 1:
-        return
+# def debug(msg, *args):
+#     logger.info(f'{msg}={pprint.pformat(args)}')
 
-    for i in range(n - t):
-        print(' ', end=' ')
+# # 30 MINUTES ATLEAST !!!!
 
-    for i in range(t + 1):
-        print(i, end=' ')
-
-    for i in range(t - 1, 0, -1):
-        print(i, end=' ')
-
-    print(0)
-
-    printPattern(t + 1, n)
-
-    if t == n:
-        return
-    for i in range(n - t):
-        print(' ', end=' ')
-
-    for i in range(t + 1):
-        print(i, end=' ')
-
-    for i in range(t - 1, 0, -1):
-        print(i, end=' ')
-
-    print(0)
+# ###################################################################################################################
 
 
-def single():
-    return map(int, input().split())
-
-# interior angle of a polygon is defined as angle b/w any two adjacent sides, i.e  180 * (n - 2) // n
-# DON'T LOOK AT TEST CASES !!
+# def solve():
+#     pass
 
 
-# from itertools import permutations
+# if __name__ == '__main__':
+#     multi = False
+#     t = 1
 
-def calc(x, y, n, val):
-    return (x + val) >= (y / 100) * n
+#     def inp(): return map(int, input().split())
 
+#     if multi:
+#         t = int(input())
 
-import collections
-
-
-def C():
-    for i in range(int(input())):
-        n, k, x = single()
-        s = input()
-        precnt = 0
-        suffcnt = 0
-        for i in s:
-            if i == '*':
-                suffcnt += 1
-
-        if suffcnt == 0:
-            print(s)
-            continue
-
-        for i in s:
-            if i == '*':
-                precnt += 1
-                suffcnt -= 1
+#     while t:
+#         t -= 1
+#         solve()
 
 
-# C()
+class Student:
 
-from itertools import permutations
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
 
+    def msg(self):  # instance method because it accesses unique values of the class
+        print(self.name, self.marks)
 
-def f():
-    s = '***'
-    se = set()
-    k = 2
-    for i in permutations(s):
-        st = ''
-        for j in i:
-            for jj in range(k + 1):
-                st += 'b' * jj
-            se.add(st)
-
-    debug("se", se)
+    @classmethod
+    def convert(cls, name, marks):
+        return cls(name, marks * 100)
 
 
-f()
+s1 = Student("sia", 10)
+s2 = Student.convert("pri", 89)
+s2.msg()
+print(s2)

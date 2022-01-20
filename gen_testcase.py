@@ -91,14 +91,14 @@ def showallsubsequences(n, s):
 
 
 def gaurd():
-    tc = 1
-    # s = 'abcdefghijklmnopqrstuvwxyz'
+    tc = 10000
+    print(tc)
     xx = []
     while tc:
         tc -= 1
-        n = 20
-        print(n)
-        print('y' + 'z' * (n - 1))
+        a = random.randint(1, 10**6)
+        b = random.randint(1, a)
+        print(b, a)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,9 @@
+pri 8900
+<__main__.Student object at 0x7f0980d56668>
+HELLO
+HELLO
+HI, I AM CREATED BY A FUNCTION PASSED AS AN ARGUMENT.
+hi, i am created by a function passed as an argument.
+The value of the tempereture is set.
+The value of the temperature is: 
+-174
