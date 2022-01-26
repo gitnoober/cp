@@ -91,7 +91,7 @@ def showallsubsequences(n, s):
 
 
 def gaurd():
-    tc = 10000
+    tc = 1
     print(tc)
     xx = []
     while tc:
@@ -99,6 +99,7 @@ def gaurd():
         a = random.randint(1, 10**6)
         b = random.randint(1, a)
         print(b, a)
+    
 
 
 if __name__ == '__main__':
