@@ -1,3 +1,6 @@
+"""
+Time Complexity : O(V+ E) -- time complexity of a simple dfs
+"""
 class DetectCycle:
     def __init__(self, graph):
         self.graph = graph
