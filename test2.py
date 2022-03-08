@@ -1,4 +1,5 @@
 from pprint import pprint
+from collections import defaultdict
 
 queryset = [{"subject__name": "Physics", "klass__name": "7th", "medium__name": "English", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 3}, {"subject__name": "Physics", "klass__name": "7th", "medium__name": "English", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "CBSE", "links": 3}, {"subject__name": "", "klass__name": "6th", "medium__name": "English", "category__name": "Ncert", "subject__sub_subject": "Civics", "board__name": "ICSE", "links": 1}, {"subject__name": "Biolog", "klass__name": "12th", "medium__name": "English", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}, {"subject__name": "Mathematics", "klass__name": "8th", "medium__name": "Hindi", "category__name": "Solution", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}, {
     "subject__name": "Mathematics", "klass__name": "6th", "medium__name": "Hindi", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 2}, {"subject__name": "Physics", "klass__name": "7th", "medium__name": "Hindi", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}, {"subject__name": "Physics", "klass__name": "7th", "medium__name": "Hindi", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "CBSE", "links": 1}, {"subject__name": "Chemistr", "klass__name": "12th", "medium__name": "Hindi", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}, {"subject__name": "Mathematics", "klass__name": "12th", "medium__name": "ngali", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}]
@@ -119,11 +120,10 @@ queryset = [
 result = {}
 levels = ["subject", "medium", "class", "board"]
 dic = defaultdict
-for data in queryset:
-    for i in range(len(levels)):
-        key = data[levels[i]]
-        if i == len(levels) - 1:
-
+# for data in queryset:
+#     for i in range(len(levels)):
+#         key = data[levels[i]]
+#         if i == len(levels) - 1:
             # for data in queryset:
             #     if not ok:
             #         currentTree = result
@@ -157,8 +157,6 @@ for data in queryset:
             # check all levels and see if this key is available or not
 
 ALL = []
-
-
 def check_level(tree, src):
 
     if "key" not in tree:

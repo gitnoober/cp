@@ -124,7 +124,7 @@ for data in queryset:
 
     func(in_order.pop(0), node)
     count += 1
-    # print(transform(node))
+print(transform(node))
 
 
 # print(transform(node))
