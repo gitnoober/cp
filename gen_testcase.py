@@ -3,10 +3,11 @@ import os
 import random
 import sys
 import time
-osi, oso = '/home/ps/Documents/cp/input.txt', '/home/ps/Documents/cp/output.txt'
+
+osi, oso = "/home/ps/Documents/cp/input.txt", "/home/ps/Documents/cp/output.txt"
 if os.path.exists(osi):
     # sys.stdin = open(osi, 'r')
-    sys.stdout = open(osi, 'w')
+    sys.stdout = open(osi, "w")
 
 
 def prime_sieve(n):
@@ -32,9 +33,13 @@ def prime_list(n):
         res.append(3)
     if n > 4:
         sieve = prime_sieve(n + 1)
-        res.extend(3 * i + 1 | 1 for i in range(1, (n + 1) // 3 + (n % 6 == 1))
-                   if not (sieve[i >> 3] >> (i & 7)) & 1)
+        res.extend(
+            3 * i + 1 | 1
+            for i in range(1, (n + 1) // 3 + (n % 6 == 1))
+            if not (sieve[i >> 3] >> (i & 7)) & 1
+        )
     return res
+
 
 # Function to return the next
 # random number
@@ -57,6 +62,7 @@ def getNum(v):
     # Return the removed number
     return num
 
+
 # Function to generate n non-repeating
 # random numbers
 def generateRandom(n):
@@ -72,7 +78,7 @@ def generateRandom(n):
     # random number from the vector
     # and print it
     # ans = []
-    while (len(v)):
+    while len(v):
         print(getNum(v), end=" ")
         # ans.append(getNum(v) % 2)
     # return ans
@@ -91,16 +97,16 @@ def showallsubsequences(n, s):
 
 
 def gaurd():
-    tc = 1
+    tc = 100
     print(tc)
     xx = []
     while tc:
         tc -= 1
-        a = random.randint(1, 10**6)
+        a = random.randint(1, 10**3)
         b = random.randint(1, a)
-        print(b, a)
-    
+        c = random.randint(1, 10**3)
+        print(b, a, c)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     gaurd()
