@@ -1,54 +1,35 @@
+import heapq
 import collections
 
 
 class Solution:
     def avoidFlood(self, rains: list[int]) -> list[int]:
         n = len(rains)
-        zeroes, lakes = collections.deque(), collections.deque()
-
+        lakes = collections.defaultdict(collections.deque)
         for i in range(n):
-            if rains[i]:
-                lakes.append(i)
-            else:
-                zeroes.append(i)
-        ans = [-1] * n
-        vis = set()
+            lakes[rains[i]].append(i)
 
+        seen = set()
+        closest = []
+        ans = []
         for i in range(n):
-            if rains[i] in vis:
+            if rains[i] in seen:
                 return []
-
             if rains[i]:
-                vis.add(rains[i])
-                lakes.popleft()
+                ans.append(-1)
+                seen.add(rains[i])
+                l = lakes[rains[i]]
+                l.popleft()
+                if l:
+                    nxt = l[0]
+                    heapq.heappush(closest, nxt)
             else:
-                ok = False
-                zeroes.popleft()
-                if len(zeroes):
-                    nxt_zero = zeroes[0]
-                    j = 0
-                    while j < len(lakes) and lakes[j] < nxt_zero:
-                        if rains[lakes[j]] in vis:
-                            ans[i] = rains[lakes[j]]
-                            vis.remove(rains[lakes[j]])
-                            ok = True
-                            break
-                        j += 1
-
-                if len(zeroes) == 0 or not ok:
-                    j = 0
-                    while j < len(lakes):
-                        if rains[lakes[j]] in vis:
-                            ans[i] = rains[lakes[j]]
-                            vis.remove(rains[lakes[j]])
-                            ok = True
-                            break
-                        j += 1
-
-                    if not ok:
-                        ans[i] = 1
-                        vis.discard(1)
-
+                if not closest:
+                    ans.append(1)
+                else:
+                    x = heapq.heappop(closest)
+                    ans.append(rains[x])
+                    seen.remove(rains[x])
         return ans
 
 

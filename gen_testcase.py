@@ -4,7 +4,10 @@ import random
 import sys
 import time
 
-osi, oso = "/home/ps/Documents/cp/input.txt", "/home/ps/Documents/cp/output.txt"
+osi, oso = (
+    "/home/priyanshu/Documents/cp/input.txt",
+    "/home/ps/Documents/priyanshu/output.txt",
+)
 if os.path.exists(osi):
     # sys.stdin = open(osi, 'r')
     sys.stdout = open(osi, "w")
@@ -98,14 +101,15 @@ def showallsubsequences(n, s):
 
 def gaurd():
     tc = 100
-    print(tc)
+    # print(tc)
     xx = []
     while tc:
         tc -= 1
-        a = random.randint(1, 10**3)
-        b = random.randint(1, a)
-        c = random.randint(1, 10**3)
-        print(b, a, c)
+        a = random.randint(1, 100)
+        b = random.randint(1, 100)
+        c = random.randint(1, 100)
+        d = random.randint(1, 100)
+        print(a, b, c, d)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,3 @@
-
 # DON'T SUBMIT UNLESS YOU'RE ABSOLUTELY SURE OR ATLEAST 70 % SURE !!!
 
 import sys
@@ -14,7 +13,7 @@ import bisect
 
 # sys.setrecursionlimit(10 ** 9)
 
-inf = float('inf')
+inf = float("inf")
 # mod = int(1e9) + 7
 # mod = 998244353
 
@@ -29,39 +28,52 @@ def check(dic, length):
         return True
 
 
-def solve():
-    s = input()
-    n = len(s)
-    d = collections.Counter(s)
-    if check(d, n):
-        return 0
+class Solution:
+    def kConcatenationMaxSum(self, arr: list[int], k: int) -> int:
+        sm = sum(arr)
 
-    ans = inf
-    for i in range(n):
-        if d[s[i]] % 2:
-            N = 0
-            for j in range(i, n):
-                d[s[j]] -= 1
-                N += 1
-                if check(d, n - N):
-                    ans = N
-                    break
-            break
-    return ans
+        def kadane(arr):
+            curmx = mx = 0
+            for i in arr:
+                curmx += i
+                if curmx < 0:
+                    curmx = 0
+                mx = max(mx, curmx)
+            return mx
+
+        ans = max(
+            0,
+            kadane(arr),
+            kadane(min(k, 2) * arr),
+            sm * k,
+            kadane(arr) + sm * (k - 1),
+        )
+
+        ans %= int(1e9 + 7)
+        return ans
 
 
-if __name__ == '__main__':
-    input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
+arr = [-5, -2, 0, 0, 3, 9, -2, -5, 4]
+k = 5
 
-    def linp(): return [int(i) for i in input().split()]
+obj = Solution().kConcatenationMaxSum(arr, k)
+print(obj)
 
-    logging.basicConfig(
-        format="%(message)s",
-        level=logging.WARNING,
-    )
-    logger = getLogger(__name__)
-    logger.setLevel(logging.INFO)
 
-    def debug(msg, *args):
-        logger.info(f'{msg}={pprint.pformat(args)}')
-    print(solve())
+# if __name__ == "__main__":
+#     # input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
+
+#     def linp():
+#         return [int(i) for i in input().split()]
+
+#     logging.basicConfig(
+#         format="%(message)s",
+#         level=logging.WARNING,
+#     )
+#     logger = getLogger(__name__)
+#     logger.setLevel(logging.INFO)
+
+#     def debug(msg, *args):
+#         logger.info(f"{msg}={pprint.pformat(args)}")
+
+#     print(solve())
