@@ -1,0 +1,23 @@
+{
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"linters": {
+	"flake8": {
+	    "@disable": false,
+	    "args": [],
+	    "builtins": "",
+	    "excludes": [],
+	    "ignore": "",
+	    "max-complexity": 10,
+	    "max-line-length": null,
+	    "select": "",
+	},
+	},
+    "trailing_spaces_modified_lines_only": true,
+    "trailing_spaces_trim_on_save": true,
+	"font_size": 9,
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "Monokai.sublime-color-scheme",
+}

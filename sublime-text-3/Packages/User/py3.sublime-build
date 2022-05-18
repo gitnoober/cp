@@ -1,0 +1,12 @@
+// {
+//  "shell_cmd": "/usr/bin/python3 \"$file\" </home/priyanshu/Documents/cp/input.txt> /home/priyanshu/Documents/cp/output.txt",
+//  "file_regex": "^[ ]File \"(...?)\", line ([0-9]*)",
+//  "selector": "source.python",
+//  "env": {"PYTHONIOENCODING":"utf-8"},
+// }
+{
+ "shell_cmd": "/home/priyanshu/Documents/cp/.venv/bin/python3 \"$file\" </home/priyanshu/Documents/cp/input.txt> /home/priyanshu/Documents/cp/output.txt",
+ "file_regex": "^[ ]File \"(...?)\", line ([0-9]*)",
+ "selector": "source.python",
+ "env": {"PYTHONIOENCODING":"utf-8"},
+}

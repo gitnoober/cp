@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+import sys
+
+def input(): return sys.stdin.readline().rstrip("\r\n")
+
+def maps():return [int(i) for i in input().split()]
+
+#lOOKOUT FOR THE EDGE CASES
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>hello</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
