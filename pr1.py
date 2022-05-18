@@ -1,22 +1,40 @@
 class Solution:
-    def fractionToDecimal(self, numerator: int, denominator: int) -> str:
-        sign = "-" if numerator * denominator < 0 else ""
-        q, rem = divmod(abs(numerator), abs(denominator))
-        res = [sign, str(q), "."]
-        rems = {}
-        while rem > 0 and rem not in rems:
-            rems[rem] = len(res)
-            q, rem = divmod(rem * 10, abs(denominator))
-            res.append(str(q))
+    def isValidSudoku(self, board) -> bool:
+        def check(i,j):
+            return False if board[i][j] == "." else True
+            
+        n, ok = 9, True
+        for i in range(n):            
+            vis, vis2= [0]*10, [0]*10
+            for j in range(n):
+                if check(i,j):
+                    vis[int(board[i][j])]+=1
+                    if vis[int(board[i][j])] > 1 :
+                        ok = False
+            
+                if check(j,i):
+                    vis2[int(board[j][i])]+=1
+                    if vis2[int(board[j][i])] > 1 :
+                        ok = False
 
-        if rem in rems:
-            res.insert(rems[rem], "(")
-            res.append(")")
-        res = "".join(res).rstrip(".")
-        return res
+                if i%3 == j%3 == 0:
+                    vis3 = [0]*10
+                    for k in range(i,i+3):
+                        for f in range(j,j+3):
+                            if not check(k,f) :
+                                continue
+                            vis3[int(board[k][f])]+=1
+                            if vis3[int(board[k][f])] > 1 :
+                                ok = False
+        return ok
 
 
-numerator = 4
-denominator = 333
-obj = Solution().fractionToDecimal(numerator, denominator)
-print(obj)
+            
+nums = [[".","4",".",".",".",".",".",".","."],[".",".","4",".",".",".",".",".","."],[".",".",".","1",".",".","7",".","."],[".",".",".",".",".",".",".",".","."],[".",".",".","3",".",".",".","6","."],[".",".",".",".",".","6",".","9","."],[".",".",".",".","1",".",".",".","."],[".",".",".",".",".",".","2",".","."],[".",".",".","8",".",".",".",".","."]]
+
+
+obj = Solution().isValidSudoku(nums)
+# print(obj)
+
+# 5000+ dollars
+# 53 dollars
