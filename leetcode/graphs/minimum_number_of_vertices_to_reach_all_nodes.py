@@ -1,44 +1,24 @@
 
 class Solution:
     def findSmallestSetOfVertices(self, n: int, edges):
-        
-        res = []
-        vis = set()
+        inn = [0 for _ in range(n)]
         gr = [[] for _ in range(n)]
         for u,v in edges:
+            inn[v]+=1
             gr[u].append(v)
 
-        temp = set()
-        def dfs(u):
-            vis.add(u)
-            temp.add(u)
-            for v in gr[u]:
-                if v in temp:
-                    continue
-                dfs(v)
-
+        q = []
         for i in range(n):
-            dfs(i)
-            temp.add(i)
-            res.append((temp.copy(),i))
-            temp.clear()
-
-        print(res)
-        res.sort(key=lambda x : -len(x[0]))
-        init = set()
-        # print(res)
-        ans = []
-        for i,j in res:
-            init |= i
-            ans.append(j)
-            if len(init) == n:
-                return  ans
+            if not inn[i]:
+                q.append(i)
+        # print(q)
+        return q
 
 
 
 
-n = 5
-edges = [[1,3],[2,0],[2,3],[1,0],[4,1],[0,3]]
+n = 6
+# edges = [[1,3],[2,0],[2,3],[1,0],[4,1],[0,3]]
+edges = [[0,1],[0,2],[2,5],[3,4],[4,2]]
 obj = Solution().findSmallestSetOfVertices(n, edges)
 print(obj)
-        

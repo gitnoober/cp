@@ -5,8 +5,8 @@ import sys
 import time
 
 osi, oso = (
-    "/home/priyanshu/Documents/cp/input.txt",
-    "/home/ps/Documents/priyanshu/output.txt",
+    "/Users/priyanshusingh/Documents/cp/input.txt",
+    "/Users/priyanshusingh/priyanshu/output.txt",
 )
 if os.path.exists(osi):
     # sys.stdin = open(osi, 'r')
@@ -100,17 +100,36 @@ def showallsubsequences(n, s):
 
 
 def gaurd():
-    tc = 100
-    # print(tc)
+    tc = 50
+    print(tc)
     xx = []
     while tc:
+        N = random.randint(2, 7)
+        print(N)
+        generateRandom(N)
+        print()
         tc -= 1
-        a = random.randint(1, 100)
-        b = random.randint(1, 100)
-        c = random.randint(1, 100)
-        d = random.randint(1, 100)
-        print(a, b, c, d)
 
 
 if __name__ == "__main__":
     gaurd()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
