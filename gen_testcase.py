@@ -100,36 +100,31 @@ def showallsubsequences(n, s):
 
 
 def gaurd():
-    tc = 50
+    tc = 100
     print(tc)
-    xx = []
+    # xx = []
+    f = "abcdefghijklmnopqrstuvwxyz"
+
+    def gen(ttt):
+        x = []
+        for _ in range(ttt):
+            x.append(random.randint(1, 20))
+        # print("".join(x))
+        print(*x)
+
     while tc:
-        N = random.randint(2, 7)
-        print(N)
-        generateRandom(N)
-        print()
+        # gen(10)
+        # print(10)
+        # for __ in range(10):
+        #     gen(10)
+        n = random.randint(2, 7)
+        # for _ in range(2):
+        print(n)
+        gen(n)
+        # gen(n, False)
+
         tc -= 1
 
 
 if __name__ == "__main__":
     gaurd()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

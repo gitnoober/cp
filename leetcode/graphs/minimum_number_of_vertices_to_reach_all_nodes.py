@@ -9,10 +9,10 @@ class Solution:
 
         q = []
         for i in range(n):
-            if not inn[i]:
+            if inn[i] == 0 :
                 q.append(i)
-        # print(q)
         return q
+
 
 
 
