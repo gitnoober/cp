@@ -6,13 +6,13 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
 
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-logging.basicConfig(filename="show_reviews_task.log", format=LOG_FORMAT)
-log = logging.getLogger("BulkReviewsDownload")
+logging.basicConfig(filename="doc_creation_task.log", format=LOG_FORMAT)
+log = logging.getLogger("DocCreation")
 log.setLevel(logging.DEBUG)
 
 
 def run(*args, **kwargs):
-    log.info("Starting Bulk Reviews Download cron...")
+    log.info("Starting Doc Creation Download cron...")
 
 
 default_args = {
@@ -24,9 +24,9 @@ default_args = {
 }
 
 dag = DAG(
-    dag_id="bulk_reviews_download",
+    dag_id="doc_creation_task",
     default_args=default_args,
-    schedule_interval="*/11 * * * *",
+    schedule_interval="0 */6 * * *",
     catchup=False,
 )
 
@@ -39,10 +39,10 @@ run = PythonOperator(
     depends_on_past=False,
 )
 
-bulk_review_task = BashOperator(
-    task_id="bulk_review_task",
-    bash_command="""ssh -o StrictHostKeyChecking=no -i ~/crawling_machine_key_pair.pem  ec2-user@13.213.61.176 'sudo su -c "source /home/ec2-user/venv/bin/activate; cd /home/ec2-user/airflow/dags; python -m novels_cron.cms.task_scheduler.show_reviews_task"' """,
+doc_creation_task = BashOperator(
+    task_id="doc_creation_task",
+    bash_command="""ssh -o StrictHostKeyChecking=no -i ~/crawling_machine_key_pair.pem  ec2-user@13.213.61.176 'sudo su -c "source /home/ec2-user/venv/bin/activate; cd /home/ec2-user/airflow/dags; python -m novels_cron.cms.task_scheduler.doc_creation_task"' """,
     dag=dag,
 )
 
-run >> bulk_review_task
+run >> doc_creation_task
