@@ -13,7 +13,6 @@ class Solution:
                 # print(i, "ii")
                 s = min(s, i[0])
                 e = max(e, i[1])
-        x = [left] + [[s, e]] + [right]
         ans = []
         if left:
             ans = left
@@ -22,6 +21,3 @@ class Solution:
             ans += right
         # print(ans, "ans")
         return ans
-
-
-obj = Solution().insert(intervals, newInterval)
