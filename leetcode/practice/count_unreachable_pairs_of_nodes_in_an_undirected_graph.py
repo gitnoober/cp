@@ -1,3 +1,6 @@
+from typing import List
+from collections import defaultdict
+
 
 
 class DisjointSetUnion:
@@ -32,19 +35,26 @@ class DisjointSetUnion:
         return self.numsets
 
 
-class UnionFind:
-    def __init__(self, n):
-        self.parent = [i for i in range(n)]
-        self.n = n
 
-    def find(self, x):
-        xcopy = x
-        while self.parent[x] != x:
-            x = self.parent[x]
-        while x != xcopy:
-            self.parent[xcopy], xcopy = x, self.parent[xcopy]
+class Solution:
+    def countPairs(self, n: int, edges: List[List[int]]) -> int:
+        tree = DisjointSetUnion(n)
+        for u,v in edges:
+            tree.union(u,v)
+        d = defaultdict(int)
+        for i in range(n):
+            d[tree.find(i)] += 1
+        summ = 0
+        for i in d:
+            summ += d[i]
+        # print(d)
+        ans = 0
+        for i in d :
+            summ -= d[i]
+            ans += tree.get_size(i) * summ
+        return ans
 
-        return x
-
-    def union(self, x, y):
-        self.parent[self.find(x)] = self.find(y)
+n = 7
+edges = [[0,2],[0,5],[2,4],[1,6],[5,4]]
+obj = Solution().countPairs(n,edges)
+print(obj)
