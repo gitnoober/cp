@@ -12,6 +12,3 @@
 > Also contains solutions to coding competitions on the coding judges platoforms.
 
 
-## Show your support
-
-If you've read this far....give a ⭐️!
