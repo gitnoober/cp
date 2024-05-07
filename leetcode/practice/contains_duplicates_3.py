@@ -1,6 +1,3 @@
-import heapq
-
-
 class Solution:
     def containsNearbyAlmostDuplicate(self, nums: list[int], k: int, t: int) -> bool:
         pass

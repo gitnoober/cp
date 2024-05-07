@@ -1,31 +1,37 @@
-
 import os
 import sys
 from io import BytesIO, IOBase
 import math as mt
-import itertools as it
 import operator as op
-import bisect as bs
-import heapq as hp
 from functools import reduce
-from io import BytesIO, IOBase
-from collections import deque, defaultdict, OrderedDict, Counter, ChainMap, _chain
-def nCr(n, r): return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
-
-def ceil(a, b): return (a + b - 1) // b
-
-def lcm(a, b): return a * b // mt.gcd(a, b)
 
 
-gcdm = lambda *args: reduce(mt.gcd, args, 0)
+def nCr(n, r):
+    return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
 
-def lcm(a, b): return a * b // mt.gcd(a, b)
+
+def ceil(a, b):
+    return (a + b - 1) // b
 
 
-lcmm = lambda *args: reduce(lcm, args, 1)
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def gcdm(*args):
+    return reduce(mt.gcd, args, 0)
+
+
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def lcmm(*args):
+    return reduce(lcm, args, 1)
 
 _str = str
-str = lambda x=b"": x if type(x) is bytes else _str(x).encode()
+def str(x=b""):
+    return x if type(x) is bytes else _str(x).encode()
 
 BUFSIZE = 8192
 
@@ -75,7 +81,11 @@ class IOWrapper(IOBase):
 
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
 
 # end region
 
@@ -83,15 +93,17 @@ def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
 # mod = int(1e9) + 7
-inf = float('inf')
+inf = float("inf")
 
-def linp(): return map(int, input().split())
+
+def linp():
+    return map(int, input().split())
 
 
 def solve():
     n, m = map(int, input().split())
     arr = []
-    labx, laby = - 1, -1
+    labx, laby = -1, -1
     t = [(0, -1), (0, 1), (1, 0), (-1, 0)]
 
     for i in range(n):
@@ -99,7 +111,7 @@ def solve():
         arr.append(inp)
 
         for j in range(m):
-            if inp[j] == 'L':
+            if inp[j] == "L":
                 labx, laby = i, j
 
     q = [(labx, laby)]
@@ -111,28 +123,34 @@ def solve():
         cnt = 0
         for dx, dy in t:
             newx, newy = dx + x, dy + y
-            if 0 <= newx < n and 0 <= newy < m and arr[newx][newy] == '.':
+            if 0 <= newx < n and 0 <= newy < m and arr[newx][newy] == ".":
                 cnt = 0
 
                 for i, j in t:
                     rw, cl = newx + i, newy + j
-                    if 0 <= rw < n and 0 <= cl < m and not vis[rw][cl] and arr[rw][cl] == '.':
+                    if (
+                        0 <= rw < n
+                        and 0 <= cl < m
+                        and not vis[rw][cl]
+                        and arr[rw][cl] == "."
+                    ):
                         cnt += 1
 
                 if cnt <= 1:
                     vis[newx][newy] = True
-                    arr[newx][newy] = '+'
+                    arr[newx][newy] = "+"
                     q.append((newx, newy))
 
     for i in arr:
-        print(''.join(i))
+        print("".join(i))
+
 
 """
     So , 'L' is a winning state, so a cell is winning iff the number of free cells adjacent to it and the losing cells, is less than 2
-    Game theory concept - In a directed graph, a cell is wining if 
+    Game theory concept - In a directed graph, a cell is wining if
     1) one it's adjacent vertex leads to a losing state
     2) all of it's adjacent vertices leads to winning vertices , then that vertex itself is a losing vertex
-    
+
 
 """
 

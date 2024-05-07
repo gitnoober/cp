@@ -1,6 +1,8 @@
 """
 Time Complexity : O(V+ E) -- time complexity of a simple dfs
 """
+
+
 class DetectCycle:
     def __init__(self, graph):
         self.graph = graph
@@ -15,10 +17,14 @@ class DetectCycle:
 
         self.color[node] = 1
         for v in self.graph[node]:
-            if self.color[v] == 1: # if found a node already processed, then this is the back edge
+            if (
+                self.color[v] == 1
+            ):  # if found a node already processed, then this is the back edge
                 return True
 
-            if self.color[v] == 0 and self.dfs(v) is True: # unprocessed so send it back to the dfs
+            if (
+                self.color[v] == 0 and self.dfs(v) is True
+            ):  # unprocessed so send it back to the dfs
                 return True
 
         self.color[node] = 2
@@ -36,13 +42,13 @@ class DetectCycle:
 # obj = DetectCycle(graph)
 # print(obj)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     tc = int(input())
     n = int(input())
     graph = [[] for _ in range(n)]
     a = list(map(int, input().split()))
     for i in range(n):
-        if a[i] == - 1:
+        if a[i] == -1:
             continue
         graph[i].append(a[i])
 

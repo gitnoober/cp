@@ -1,19 +1,24 @@
-
 import sys
 import pprint
 import logging
 from logging import getLogger
-from itertools import accumulate
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+logging.basicConfig(
+    format="%(message)s",
+    level=logging.WARNING,
+)
 logger = getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
+
 
 # 30 MINUTES ATLEAST !!!!
 
@@ -34,15 +39,16 @@ def check(cnt, mex):
 
 
 def solve():
-    n, = inp()
-    a = sorted(inp())
+    (n,) = inp()
+    sorted(inp())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     multi = True
     t = 1
 
-    def inp(): return map(int, input().split())
+    def inp():
+        return map(int, input().split())
 
     if multi:
         t = int(input())

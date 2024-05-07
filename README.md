@@ -10,5 +10,3 @@
 > My Solutions to various problems on Codechef, Codeforces, Leetcode, Atcoder
 > <br>
 > Also contains solutions to coding competitions on the coding judges platoforms.
-
-

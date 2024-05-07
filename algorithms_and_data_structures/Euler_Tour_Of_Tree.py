@@ -1,4 +1,3 @@
-
 maxN = int(2e6)
 idx = 0
 euler_path = [-1] * maxN

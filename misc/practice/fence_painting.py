@@ -1,17 +1,15 @@
-inf = float('inf')
+inf = float("inf")
 import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 
 # sys.setrecursionlimit(10 ** 9)
 
 
 def solve():
 
-    n , m = maps()
+    n, m = maps()
     a = [*maps()]
     b = [*maps()]
     c = [*maps()]
@@ -23,7 +21,7 @@ def solve():
             diff[b[i]].append(i)
 
     last = -1
-    if len(diff[c[m - 1]]) > 0 :
+    if len(diff[c[m - 1]]) > 0:
         last = diff[c[m - 1]].pop()
     else:
         for i in range(n):
@@ -32,7 +30,7 @@ def solve():
                 break
 
     if last == -1:
-        print('NO')
+        print("NO")
         return
 
     c[m - 1] = last
@@ -45,23 +43,21 @@ def solve():
     for i in range(m):
         a[c[i]] = C[i]
 
-    if a != b :
-        print('NO')
+    if a != b:
+        print("NO")
         return
 
-    print('YES')
-    print(*map(lambda x : x + 1 , c))
+    print("YES")
+    print(*map(lambda x: x + 1, c))
 
 
+if __name__ == "__main__":
 
+    def input():
+        return sys.stdin.readline().rstrip("\r\n")
 
-
-
-
-if __name__ == '__main__':
-    def input(): return sys.stdin.readline().rstrip("\r\n")
-
-    def maps(): return [int(i) for i in input().split()]
+    def maps():
+        return [int(i) for i in input().split()]
 
     logging.basicConfig(
         format="%(message)s",
@@ -71,7 +67,7 @@ if __name__ == '__main__':
     logger.setLevel(logging.INFO)
 
     def debug(msg, *args):
-        logger.info(f'{msg}={pprint.pformat(args)}')
+        logger.info(f"{msg}={pprint.pformat(args)}")
 
     for _ in range(*maps()):
         solve()

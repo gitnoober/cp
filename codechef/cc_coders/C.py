@@ -1,20 +1,12 @@
-
 # DON'T SUBMIT UNLESS YOU'RE ABSOLUTELY SURE OR ATLEAST 70 % SURE !!!
 
-import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
-import io
-import os
-import heapq
-import bisect
 
 # sys.setrecursionlimit(10 ** 9)
 
-inf = float('inf')
+inf = float("inf")
 # mod = int(1e9) + 7
 # mod = 998244353
 
@@ -24,7 +16,7 @@ def sol1(n, p, q, s):
     for fl in range(2):
         a = [0, 0]
         for i in s:
-            if i == '0':
+            if i == "0":
                 fl ^= 1
             a[fl] += 1
 
@@ -44,7 +36,7 @@ def solve():
     for curr in range(2):
         x = y = 0
         for i in s:
-            if i == '1':
+            if i == "1":
                 if curr == 0:
                     x += 1
                 else:
@@ -65,10 +57,11 @@ def solve():
         debug("an2 , ok ", an2, ok)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
 
-    def linp(): return [int(i) for i in input().split()]
+    def linp():
+        return [int(i) for i in input().split()]
 
     logging.basicConfig(
         format="%(message)s",
@@ -78,6 +71,7 @@ if __name__ == '__main__':
     logger.setLevel(logging.INFO)
 
     def debug(msg, *args):
-        logger.info(f'{msg}={pprint.pformat(args)}')
+        logger.info(f"{msg}={pprint.pformat(args)}")
+
     for _ in range(*linp()):
         solve()

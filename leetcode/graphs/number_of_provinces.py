@@ -1,5 +1,3 @@
-
-
 # class Solution:
 #     def findCircleNum(self, isConnected):
 #         n = len(isConnected)
@@ -33,9 +31,6 @@
 #         return len(vis)
 
 
-
-
-
 class Solution:
     def findCircleNum(self, isConnected):
         n = len(isConnected)
@@ -47,7 +42,7 @@ class Solution:
                 if isConnected[i][j]:
                     gr[i].append(j)
 
-        cnt = 0 
+        cnt = 0
         for i in range(n):
             if i in vis:
                 continue
@@ -58,15 +53,14 @@ class Solution:
                     if j in vis:
                         continue
                     dfs(j)
+
             dfs(i)
-            cnt+=1
+            cnt += 1
 
         return cnt
 
 
 # disjoint set union
-isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+isConnected = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
 obj = Solution().findCircleNum(isConnected)
 print(obj)
-
-

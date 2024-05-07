@@ -1,8 +1,12 @@
 import sys
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps(): return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+def maps():
+    return [int(i) for i in input().split()]
 
 
 def isprime(num):
@@ -25,10 +29,10 @@ def isprime(num):
 from collections import defaultdict
 
 for _ in range(*maps()):
-    k, = maps()
+    (k,) = maps()
     num = input()
-    if '1' in num:
-        print(1, 1, sep='\n')
+    if "1" in num:
+        print(1, 1, sep="\n")
         continue
     i = 10
     cnt = 9
@@ -64,7 +68,7 @@ for _ in range(*maps()):
                 idx1 = num.index(i[0])
                 idx2 = k - num[::-1].index(i[1]) - 1
                 if idx1 < idx2:
-                    print(len(i), i, sep='\n')
+                    print(len(i), i, sep="\n")
                     break
 
             d[i[0]] += 1
@@ -73,7 +77,7 @@ for _ in range(*maps()):
         elif len(i) == 1:
             d[i[0]] -= 1
             if d[i[0]] >= 0:
-                print(1, i, sep='\n')
+                print(1, i, sep="\n")
                 break
             d[i[0]] += 1
 

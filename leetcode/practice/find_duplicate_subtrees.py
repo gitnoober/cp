@@ -9,7 +9,6 @@ from collections import defaultdict
 
 class Solution:
     def findDuplicateSubtrees(self, root):
-        ans = []
         dic = defaultdict(list)
         # st = [root]  # node
 

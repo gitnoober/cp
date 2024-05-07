@@ -1,6 +1,3 @@
-from itertools import permutations
-
-
 def calculate_median(n):
     N = len(n)
     n.sort()

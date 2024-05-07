@@ -1,17 +1,107 @@
 from pprint import pprint
 from collections import defaultdict
 
-queryset = [{"subject__name": "Physics", "klass__name": "7th", "medium__name": "English", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 3}, {"subject__name": "Physics", "klass__name": "7th", "medium__name": "English", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "CBSE", "links": 3}, {"subject__name": "", "klass__name": "6th", "medium__name": "English", "category__name": "Ncert", "subject__sub_subject": "Civics", "board__name": "ICSE", "links": 1}, {"subject__name": "Biolog", "klass__name": "12th", "medium__name": "English", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}, {"subject__name": "Mathematics", "klass__name": "8th", "medium__name": "Hindi", "category__name": "Solution", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}, {
-    "subject__name": "Mathematics", "klass__name": "6th", "medium__name": "Hindi", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 2}, {"subject__name": "Physics", "klass__name": "7th", "medium__name": "Hindi", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}, {"subject__name": "Physics", "klass__name": "7th", "medium__name": "Hindi", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "CBSE", "links": 1}, {"subject__name": "Chemistr", "klass__name": "12th", "medium__name": "Hindi", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}, {"subject__name": "Mathematics", "klass__name": "12th", "medium__name": "ngali", "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}]
+queryset = [
+    {
+        "subject__name": "Physics",
+        "klass__name": "7th",
+        "medium__name": "English",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 3,
+    },
+    {
+        "subject__name": "Physics",
+        "klass__name": "7th",
+        "medium__name": "English",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "CBSE",
+        "links": 3,
+    },
+    {
+        "subject__name": "",
+        "klass__name": "6th",
+        "medium__name": "English",
+        "category__name": "Ncert",
+        "subject__sub_subject": "Civics",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Biolog",
+        "klass__name": "12th",
+        "medium__name": "English",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Mathematics",
+        "klass__name": "8th",
+        "medium__name": "Hindi",
+        "category__name": "Solution",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Mathematics",
+        "klass__name": "6th",
+        "medium__name": "Hindi",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 2,
+    },
+    {
+        "subject__name": "Physics",
+        "klass__name": "7th",
+        "medium__name": "Hindi",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Physics",
+        "klass__name": "7th",
+        "medium__name": "Hindi",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "CBSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Chemistr",
+        "klass__name": "12th",
+        "medium__name": "Hindi",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Mathematics",
+        "klass__name": "12th",
+        "medium__name": "ngali",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+]
 # print(queryset[2])
 
-l1 = 'subject__name'
-l2 = 'klass__name'
-l3 = 'medium__name'
-l4 = 'category__name'
-l5 = 'board__name'
-l6 = 'subject__sub_subject'
-l7 = 'links'
+l1 = "subject__name"
+l2 = "klass__name"
+l3 = "medium__name"
+l4 = "category__name"
+l5 = "board__name"
+l6 = "subject__sub_subject"
+l7 = "links"
 
 
 def check(key, tree):
@@ -26,7 +116,6 @@ def make_tree():
     for data in queryset:
         # print(data.values())
         cnt = 0
-        stack = []
 
         # for k , v in data.items():
         #     cnt += 1
@@ -39,15 +128,13 @@ def make_tree():
         arr = []
         for k, v in data:
             cnt += 1
-            if v == '':
-                arr.append('null')
+            if v == "":
+                arr.append("null")
             else:
                 arr.append(str(v))
             if cnt == 7:
-                keyy = k
                 break
 
-        prev = []
         # print(ar)
         curtree = tree
         for j in range(7):
@@ -106,14 +193,23 @@ def make_tree():
 # r = json.dumps(result)
 # print(r)
 
-from pprint import pprint
 
 queryset = [
     # {"count": 10, "subject": "math", "category": "ncert", "medium": "english"},
-    {"count": 17, "subject": "math",
-        "medium": "bengali", "class": "6th", "board": "cbse"},
-    {"count": 17, "subject": "math",
-        "medium": "bengali", "class": "7th", "board": "cbse"},
+    {
+        "count": 17,
+        "subject": "math",
+        "medium": "bengali",
+        "class": "6th",
+        "board": "cbse",
+    },
+    {
+        "count": 17,
+        "subject": "math",
+        "medium": "bengali",
+        "class": "7th",
+        "board": "cbse",
+    },
     # {"count": 8, "subject": "english", "category": "ncert", "medium": "english"},
 ]
 
@@ -124,39 +220,41 @@ dic = defaultdict
 #     for i in range(len(levels)):
 #         key = data[levels[i]]
 #         if i == len(levels) - 1:
-            # for data in queryset:
-            #     if not ok:
-            #         currentTree = result
-            #         # ok = True
-            #     else:
-            #         # print("inheritance", currentTree["data"])
-            #         currentTree = currentTree["data"][0]
-            #     # pprint(currentTree)
-            #     for level in levels:
-            #         key = data[level]
-            #         # print(data[level])
-            #         # key2 = "data"
-            #         if "data" not in currentTree:
-            #             currentTree["data"] = [{}]
-            #         if key not in currentTree["data"][0]:
-            #             currentTree["data"][0][key] = {}
-            #         # print(currentTree,"level")
-            #         # print(currentTree[key], key)
-            #         currentTree["data"] = [{}]
-            #         # currentTree = currentTree[key]
-            #         # print(currentTree["data"][0], currentTree[key])
-            #         currentTree = currentTree["data"][0]
-            #         currentTree["key"] = key
-            #         currentTree["icon"] = "link"
-            #         # currentTree = currentTree["data"][0]
-            #     # currentTree["data"] = [{}]
+# for data in queryset:
+#     if not ok:
+#         currentTree = result
+#         # ok = True
+#     else:
+#         # print("inheritance", currentTree["data"])
+#         currentTree = currentTree["data"][0]
+#     # pprint(currentTree)
+#     for level in levels:
+#         key = data[level]
+#         # print(data[level])
+#         # key2 = "data"
+#         if "data" not in currentTree:
+#             currentTree["data"] = [{}]
+#         if key not in currentTree["data"][0]:
+#             currentTree["data"][0][key] = {}
+#         # print(currentTree,"level")
+#         # print(currentTree[key], key)
+#         currentTree["data"] = [{}]
+#         # currentTree = currentTree[key]
+#         # print(currentTree["data"][0], currentTree[key])
+#         currentTree = currentTree["data"][0]
+#         currentTree["key"] = key
+#         currentTree["icon"] = "link"
+#         # currentTree = currentTree["data"][0]
+#     # currentTree["data"] = [{}]
 
-            #     # pprint(currentTree)
-            #     # print(currentTree["data"])
+#     # pprint(currentTree)
+#     # print(currentTree["data"])
 
-            # check all levels and see if this key is available or not
+# check all levels and see if this key is available or not
 
 ALL = []
+
+
 def check_level(tree, src):
 
     if "key" not in tree:
@@ -228,6 +326,7 @@ all_keys = set()
 
 
 import json
+
 r = json.dumps(result)
 # pprint(result)
 # print(r)

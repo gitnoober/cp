@@ -1,19 +1,24 @@
-
 import sys
 import pprint
 import logging
 from logging import getLogger
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+logging.basicConfig(
+    format="%(message)s",
+    level=logging.WARNING,
+)
 logger = getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
+
 
 # 30 MINUTES ATLEAST !!!!
 
@@ -31,7 +36,7 @@ p = [(0, -1), (0, 1), (1, 0), (-1, 0)]
 
 for i in range(h):
     for j in range(w):
-        if arr[i][j] == '.':
+        if arr[i][j] == ".":
             se = set()
             for k in range(4):
                 dx, dy = p[k]
@@ -43,4 +48,4 @@ for i in range(h):
                     arr[i][j] = str(k)
                     break
 for i in arr:
-    print(''.join(i))
+    print("".join(i))

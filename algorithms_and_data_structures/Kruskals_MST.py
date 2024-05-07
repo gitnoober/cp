@@ -6,6 +6,7 @@
     3) If it doesn't add it to the mstset
 """
 
+
 class Kruskal:
 
     def __init__(self, graph, n):
@@ -35,7 +36,9 @@ class Kruskal:
             self.sz[x] += self.sz[y]
 
     def findmst(self):
-        self.gr.sort(key=lambda x: x[2])  # assuming weights is the third element in the tuple
+        self.gr.sort(
+            key=lambda x: x[2]
+        )  # assuming weights is the third element in the tuple
         res = []
         i = e = 0
         summ = 0

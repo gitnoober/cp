@@ -1,19 +1,24 @@
-
 import sys
 import pprint
 import logging
 from logging import getLogger
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+logging.basicConfig(
+    format="%(message)s",
+    level=logging.WARNING,
+)
 logger = getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
+
 
 # 30 MINUTES ATLEAST !!!!
 
@@ -51,10 +56,10 @@ def solve():
         if a != b:
             break
 
-        res += (1 << a)
+        res += 1 << a
 
-        l -= (1 << a)
-        r -= (1 << a)
+        l -= 1 << a
+        r -= 1 << a
 
     if res > 0:
         print(0)
@@ -66,18 +71,19 @@ def solve():
     for j in range(20):
         a2[j] -= a1[j]
 
-    mi = float('inf')
+    mi = float("inf")
     for i in range(20):
         mi = min(mi, a2[i])
 
     print(mi)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     multi = True
     t = 1
 
-    def inp(): return map(int, input().split())
+    def inp():
+        return map(int, input().split())
 
     if multi:
         t = int(input())

@@ -14,15 +14,15 @@ dis, direction = input().split()
 a = list(map(int, input().split()))
 dis = int(dis)
 ok = False
-for i in range(1,n+1):
-	for j in combinations(a,i):
-		if sum(j) == dis:
-			ok = True
-			break
-	if ok :
-		break
+for i in range(1, n + 1):
+    for j in combinations(a, i):
+        if sum(j) == dis:
+            ok = True
+            break
+    if ok:
+        break
 
-sys.stdout.write('Possible' if ok else 'Not Possible')
+sys.stdout.write("Possible" if ok else "Not Possible")
 """
 5
 5 Right

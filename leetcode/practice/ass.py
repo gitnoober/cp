@@ -1,5 +1,5 @@
 """
-Problem Statement 1 
+Problem Statement 1
 
 
 file_location = input("Enter source file path: ")
@@ -30,9 +30,8 @@ except FileNotFoundError:
     print("Unable to open file.")
 """
 
-
 """
-Problem Statement 2 
+Problem Statement 2
 
 
 word = input("Enter a word: ")

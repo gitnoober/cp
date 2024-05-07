@@ -24,6 +24,7 @@ class TopologicalSort:
                 self.dfs(i)
         return self.stack[::-1]
 
+
 # the vertex with no incoming edges is placed first
 # Time Complexity - O(V + E)
 
@@ -59,7 +60,7 @@ class KhansToplogicalSort:
         return stack
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     tc = int(input())
     n = int(input())
     # a = list(map(int, input().split()))

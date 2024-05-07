@@ -3,7 +3,7 @@ import sys,time
 # mod = int(1e9 + 7)
 # import re
 from math import ceil, floor,gcd,log,log2 ,factorial
-from collections import * 
+from collections import *
 # from bisect import *
 maxx = float('inf')
 #----------------------------INPUT FUNCTIONS------------------------------------------#
@@ -17,7 +17,7 @@ star = lambda x: print(' '.join(map(str, x)))
 localsys = 0
 start_time = time.time()
 if (path.exists('input.txt')):
-	sys.stdin=open('input.txt','r');sys.stdout=open('output.txt','w');
+	sys.stdin=open('input.txt','r');sys.stdout=open('output.txt','w')
 #left shift --- num*(2**k) --(k - shift)
 ###########################EVEN SUBSEQUENCES##########################
 def evensubs():
@@ -59,7 +59,7 @@ def hororscope():
 		if len(count[x-y]) == 1:
 			unique+=1
 		print('Yes') if len(count) == unique else print('No')
-		
+
 
 
 
@@ -72,6 +72,3 @@ def hororscope():
 
 if localsys:
 	print("\n\nTime Elased :",time.time() - start_time,"seconds")
-
-
-

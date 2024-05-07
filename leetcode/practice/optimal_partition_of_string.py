@@ -1,6 +1,3 @@
-from collections import defaultdict
-
-
 class Solution:
     def partitionString(self, s: str) -> int:
         d = set()

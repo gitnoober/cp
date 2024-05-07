@@ -1,6 +1,3 @@
-from functools import lru_cache
-
-
 class Solution:
     def maxSatisfaction(self, a) -> int:
         a.sort()

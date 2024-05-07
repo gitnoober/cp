@@ -1,10 +1,7 @@
-
-
 def find_cycle(graph):
     n = len(graph)
-    vis = [False] * n
+    [False] * n
     color = [0] * n
-    cnt = [0]
 
     def dfs(u, p):
         color[u] = 1
@@ -32,7 +29,7 @@ Find the largest cycle
 
 def find_largest_cycle(graph):
     n = len(graph)
-    vis = [False] * n
+    [False] * n
     color = [0] * n
     cnt = [0]
 
@@ -47,6 +44,7 @@ def find_largest_cycle(graph):
 
         color[u] = 2
         return True
+
     ans = 1
     for i in range(n):
         color = [0] * n

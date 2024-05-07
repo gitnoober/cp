@@ -1,28 +1,97 @@
 from collections import defaultdict
-from pprint import pprint
 import json
-import logging
+
 queryset = [
-    {"subject__name": "Physics", "klass__name": "7th", "medium__name": "Englishmed",
-        "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 3},
-    {"subject__name": "Physics", "klass__name": "7th", "medium__name": "Englishmed",
-        "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "CBSE", "links": 3},
-    {"subject__name": "SST", "klass__name": "6th", "medium__name": "Englishmed",
-        "category__name": "Ncert", "subject__sub_subject": "Civics", "board__name": "ICSE", "links": 1},
-    {"subject__name": "Biolog", "klass__name": "12th", "medium__name": "Englishmed",
-        "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1},
-    {"subject__name": "Mathematics", "klass__name": "8th", "medium__name": "Hindimed",
-        "category__name": "Solution", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1},
-    {"subject__name": "Mathematics", "klass__name": "6th", "medium__name": "Hindimed",
-        "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 2},
-    {"subject__name": "Physics", "klass__name": "7th", "medium__name": "Hindimed",
-        "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1},
-    {"subject__name": "Physics", "klass__name": "7th", "medium__name": "Hindimed",
-        "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "CBSE", "links": 1},
-    {"subject__name": "Chemistr", "klass__name": "12th", "medium__name": "Hindimed",
-        "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1},
-    {"subject__name": "Mathematics", "klass__name": "12th", "medium__name": "ngali",
-        "category__name": "Ncert", "subject__sub_subject": "null", "board__name": "ICSE", "links": 1}
+    {
+        "subject__name": "Physics",
+        "klass__name": "7th",
+        "medium__name": "Englishmed",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 3,
+    },
+    {
+        "subject__name": "Physics",
+        "klass__name": "7th",
+        "medium__name": "Englishmed",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "CBSE",
+        "links": 3,
+    },
+    {
+        "subject__name": "SST",
+        "klass__name": "6th",
+        "medium__name": "Englishmed",
+        "category__name": "Ncert",
+        "subject__sub_subject": "Civics",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Biolog",
+        "klass__name": "12th",
+        "medium__name": "Englishmed",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Mathematics",
+        "klass__name": "8th",
+        "medium__name": "Hindimed",
+        "category__name": "Solution",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Mathematics",
+        "klass__name": "6th",
+        "medium__name": "Hindimed",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 2,
+    },
+    {
+        "subject__name": "Physics",
+        "klass__name": "7th",
+        "medium__name": "Hindimed",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Physics",
+        "klass__name": "7th",
+        "medium__name": "Hindimed",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "CBSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Chemistr",
+        "klass__name": "12th",
+        "medium__name": "Hindimed",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
+    {
+        "subject__name": "Mathematics",
+        "klass__name": "12th",
+        "medium__name": "ngali",
+        "category__name": "Ncert",
+        "subject__sub_subject": "null",
+        "board__name": "ICSE",
+        "links": 1,
+    },
 ]
 # print(queryset[2])
 q = []
@@ -32,18 +101,18 @@ def transform(dd):
     return json.dumps(dd)
 
 
-l1 = 'subject__name'
-l2 = 'klass__name'
-l3 = 'medium__name'
-l4 = 'category__name'
-l5 = 'subject__sub_subject'
-l6 = 'board__name'
-l7 = 'links'
+l1 = "subject__name"
+l2 = "klass__name"
+l3 = "medium__name"
+l4 = "category__name"
+l5 = "subject__sub_subject"
+l6 = "board__name"
+l7 = "links"
 levels = [l1, l2, l3, l4, l5, l6]
 
 a = defaultdict(set)
 ap = defaultdict(list)
-meta_list = ['subject__sub_subject__meta']
+meta_list = ["subject__sub_subject__meta"]
 meta = {i: None for i in meta_list}
 # print(meta)
 
@@ -77,18 +146,14 @@ meta = {i: None for i in meta_list}
 
 
 def create_node(name, value=None):  # value = links
-    return {
-        'name': name,
-        'value': value,
-        'data': []
-    }
+    return {"name": name, "value": value, "data": []}
 
 
 def add_child(node, obj):
-    node['data'].append(obj)
+    node["data"].append(obj)
 
 
-node = create_node('root')
+node = create_node("root")
 count = 0
 for data in queryset:
     if count == 3:
@@ -96,7 +161,7 @@ for data in queryset:
     in_order = []
     for level in levels:
         if level == l3:
-            in_order.append(data[level] + 'med')
+            in_order.append(data[level] + "med")
         else:
             in_order.append(data[level])
     # f = {: None for i in levels}
@@ -104,8 +169,8 @@ for data in queryset:
 
     def func(key, par):
         ok = True
-        for k in par['data']:
-            if k['name'] == key:
+        for k in par["data"]:
+            if k["name"] == key:
                 ok = False
 
         if ok:
@@ -116,10 +181,10 @@ for data in queryset:
         idx = 0
         val = in_order.pop(0)
 
-        for k in par['data']:
-            if k['name'] == key:
+        for k in par["data"]:
+            if k["name"] == key:
                 # print(val)
-                func(val, par['data'][idx])
+                func(val, par["data"][idx])
             idx += 1
 
     func(in_order.pop(0), node)
@@ -238,7 +303,6 @@ def func(dic,key, node):
 
 
 def check(level, tree, cnt=-1):
-    val = None
     while cnt < level:
         cnt += 1
         if "data" in tree:

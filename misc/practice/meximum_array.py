@@ -1,9 +1,8 @@
 import sys
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
-from collections import defaultdict
-import heapq as h
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
 def main():
@@ -31,7 +30,7 @@ def main():
             ok1[a[ii]] = False
             ii += 1
         b.append(start)
-    print(len(b), '\n', *b)
+    print(len(b), "\n", *b)
 
 
 tc = int(input())

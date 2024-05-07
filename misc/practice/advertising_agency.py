@@ -1,12 +1,10 @@
-inf = float('inf')
+inf = float("inf")
 import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 
-sys.setrecursionlimit(10 ** 4)
+sys.setrecursionlimit(10**4)
 
 
 def make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):
@@ -37,34 +35,32 @@ def make_nCr_mod(max_n=2 * 10**5, mod=10**9 + 7):
 
 nCr = make_nCr_mod(1005)
 
+
 def solve():
 
-    n , k = maps()
+    n, k = maps()
     nums = [*maps()]
 
     cnt = [0] * (n + 1)
     for i in nums:
         cnt[i] += 1
 
-    for i in range(n , 0 , -1):
-        if cnt[i] >= k :
-            print(nCr(cnt[i] , k))
+    for i in range(n, 0, -1):
+        if cnt[i] >= k:
+            print(nCr(cnt[i], k))
             return
 
         k -= cnt[i]
     print(1)
 
 
+if __name__ == "__main__":
 
+    def input():
+        return sys.stdin.readline().rstrip("\r\n")
 
-
-
-
-
-if __name__ == '__main__':
-    def input(): return sys.stdin.readline().rstrip("\r\n")
-
-    def maps(): return [int(i) for i in input().split()]
+    def maps():
+        return [int(i) for i in input().split()]
 
     logging.basicConfig(
         format="%(message)s",
@@ -74,7 +70,7 @@ if __name__ == '__main__':
     logger.setLevel(logging.INFO)
 
     def debug(msg, *args):
-        logger.info(f'{msg}={pprint.pformat(args)}')
+        logger.info(f"{msg}={pprint.pformat(args)}")
 
     for __ in range(*maps()):
         solve()

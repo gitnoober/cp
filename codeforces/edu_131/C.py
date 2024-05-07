@@ -1,5 +1,5 @@
 from collections import defaultdict
-from heapq import heapify, heappop, heappush
+from heapq import heappop, heappush
 
 N = int(input())
 for _ in range(N):

@@ -1,16 +1,18 @@
-inf = float('inf')
+inf = float("inf")
 import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 
 # sys.setrecursionlimit(10 ** 6)
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps(): return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+def maps():
+    return [int(i) for i in input().split()]
 
 
 logging.basicConfig(
@@ -22,7 +24,7 @@ logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
 
 
 def solve():
@@ -81,8 +83,8 @@ def solve():
     print(idx)
 
 
-if __name__ == '__main__':
-    tc, = maps()
+if __name__ == "__main__":
+    (tc,) = maps()
     while tc > 0:
         tc -= 1
         solve()

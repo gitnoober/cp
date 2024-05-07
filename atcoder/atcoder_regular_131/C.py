@@ -1,20 +1,24 @@
-
 import sys
 import pprint
 import logging
 from logging import getLogger
-import collections
-
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+logging.basicConfig(
+    format="%(message)s",
+    level=logging.WARNING,
+)
 logger = getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
+
 
 # 30 MINUTES ATLEAST !!!!
 
@@ -54,8 +58,7 @@ for i in a:
         ok = True
 
 if ok:
-    print('Win') #if removing one element is a winning state then its trivial
+    print("Win")  # if removing one element is a winning state then its trivial
 else:
-    print('Win' if n % 2 else 'Lose') 
-    #there will always be atleast one bit that occurs an odd number of  times , so ultimately it will boil down to removing elements till the last one
-
+    print("Win" if n % 2 else "Lose")
+    # there will always be atleast one bit that occurs an odd number of  times , so ultimately it will boil down to removing elements till the last one

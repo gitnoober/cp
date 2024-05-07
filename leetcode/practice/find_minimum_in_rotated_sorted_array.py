@@ -1,7 +1,7 @@
 class Solution:
     def findMin(self, nums: list[int]) -> int:
         def binary(arr, l, h):
-            n = len(arr)
+            len(arr)
             mx = float("inf")
             while l <= h:
                 m = (l + h) >> 1

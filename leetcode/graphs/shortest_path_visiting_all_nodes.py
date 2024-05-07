@@ -1,5 +1,6 @@
 import collections
 
+
 class Solution:
     def shortestPathLength(self, graph):
         # all paths
@@ -41,16 +42,16 @@ class Solution:
         def bfs():
             n = len(graph)
 
-            masks = [1<<i for i in range(n)]
+            masks = [1 << i for i in range(n)]
             q = collections.deque((i, masks[i]) for i in range(n))
-            allvis = (1<<n)  - 1
+            allvis = (1 << n) - 1
 
             allstates = [{masks[i]} for i in range(n)]
 
             steps = 0
-            while q :
+            while q:
                 cnt = len(q)
-                while cnt :
+                while cnt:
                     node, state = q.popleft()
                     if state == allvis:
                         return steps
@@ -65,20 +66,15 @@ class Solution:
                             allstates[child].add(new_state)
                             q.append((child, new_state))
 
-                    cnt-=1
+                    cnt -= 1
 
-                steps+=1
+                steps += 1
 
-            return float('inf')
+            return float("inf")
+
         return bfs()
         # print(bfs())
 
 
-
-
-
-
-
-
-graph = [[1],[0,2,4],[1,3,4],[2],[1,2]]
+graph = [[1], [0, 2, 4], [1, 3, 4], [2], [1, 2]]
 obj = Solution().shortestPathLength(graph)

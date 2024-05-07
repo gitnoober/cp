@@ -3,4 +3,4 @@ class Solution:
         if not node:
             return node
 
-        q, clones = [], {node.val}
+        _q, _clones = [], {node.val}

@@ -1,9 +1,11 @@
 from collections import deque
 
+
 class TrieNode:
     def __init__(self):
         self.word = False
         self.children = {}
+
 
 class WordDictionary:
 
@@ -11,7 +13,6 @@ class WordDictionary:
         self.root = TrieNode()
         self.simple_set = set()
         self.lengths = set()
-        
 
     def addWord(self, word: str) -> None:
         node = self.root
@@ -23,7 +24,6 @@ class WordDictionary:
             self.simple_set.add(word)
         self.lengths.add(len(word))
         node.word = True
-        
 
     def search(self, word: str) -> bool:
         if "." not in word:
@@ -40,23 +40,14 @@ class WordDictionary:
                     return True
                 continue
             else:
-                if word[idx] == '.':
+                if word[idx] == ".":
                     for child in node.children:
-                        st.append((idx+1, node.children[child]))
+                        st.append((idx + 1, node.children[child]))
                 else:
                     if word[idx] not in node.children:
                         continue
-                    st.append((idx+1, node.children[word[idx]]))
+                    st.append((idx + 1, node.children[word[idx]]))
         return False
-            
-
-            
-            
-            
-
-                
-                
-        
 
 
 # Your WordDictionary object will be instantiated and called as such:

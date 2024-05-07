@@ -28,21 +28,6 @@
 #         if num == 0:
 #             res.append(0)
 #         elif max(all_sum) < q :
-            
-
-
-
-                
-
-
-
-        
-
-
-
-
-
-
 
 
 # N = int(input())
@@ -54,20 +39,20 @@
 # print (' '.join(map(str, out_)))
 
 
-from itertools import combinations, permutations
+from itertools import combinations
 
-a = list(range(1,10)) + list(range(1,10)) + list(range(1,10))
+a = list(range(1, 10)) + list(range(1, 10)) + list(range(1, 10))
 se = set()
-for i in combinations(a,4):
+for i in combinations(a, 4):
     if sum(i) == 7:
         ok = True
-        for j in i :
-            if j > 3 :
+        for j in i:
+            if j > 3:
                 ok = False
         if ok:
-        # print(i)
+            # print(i)
             se.add(i)
 
 # print(len(se))
-for i in se :
+for i in se:
     print(i)

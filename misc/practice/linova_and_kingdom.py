@@ -1,18 +1,24 @@
-
 import sys
 import pprint
 import logging
 from logging import getLogger
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+logging.basicConfig(
+    format="%(message)s",
+    level=logging.WARNING,
+)
 logger = getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
+
 
 # 30 MINUTES ATLEAST !!!!
 
@@ -76,7 +82,7 @@ def dfs(start=0):
             finished[start] = True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     n, k = map(int, input().split())
     build()
     BFS()
@@ -90,6 +96,6 @@ if __name__ == '__main__':
     f.sort()
 
     ans = 0
-    for i in range(n - 1, n - k - 1, - 1):
+    for i in range(n - 1, n - k - 1, -1):
         ans += f[i]
     print(ans)

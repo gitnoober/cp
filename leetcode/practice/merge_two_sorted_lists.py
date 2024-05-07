@@ -4,7 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists(self, list1, list2) :
+    def mergeTwoLists(self, list1, list2):
         res = dummy = ListNode()
 
         while list1 and list2:
@@ -19,18 +19,11 @@ class Solution:
         if list1 or list2:
             res.next = list1 if list1 else list2
 
-
         return dummy.next
-
-
 
 
 def swappairs(head):
 
     # 1, 2, 3, 4
     # 2, 1, 4, 3
-    h = head
-
-    
-
-
+    pass

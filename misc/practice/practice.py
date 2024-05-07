@@ -1,17 +1,28 @@
-import os , sys,time, collections as c , math , pprint as p , itertools as it , operator as op , bisect as bs ,functools as fn
-maxx , localsys , mod = float('inf'), 0 , int(1e9 + 7) 
-nCr = lambda n, r: reduce(mul, range(n - r + 1, n + 1), 1) // factorial(r)
-ceil = lambda n , x: (n+x -1 )//x 
-osi, oso = '/home/priyanshu/Documents/sublimetextproject/input.txt','/home/priyanshu/Documents/sublimetextproject/output.txt'
+import os
+import sys
+
+maxx, localsys, mod = float("inf"), 0, int(1e9 + 7)
+def nCr(n, r):
+    return reduce(mul, range(n - r + 1, n + 1), 1) // factorial(r)
+def ceil(n, x):
+    return (n + x - 1) // x
+osi, oso = (
+    "/home/priyanshu/Documents/sublimetextproject/input.txt",
+    "/home/priyanshu/Documents/sublimetextproject/output.txt",
+)
 if os.path.exists(osi):
-    sys.stdin  = open(osi, 'r') ; sys.stdout = open(oso, 'w')
+    sys.stdin = open(osi, "r")
+    sys.stdout = open(oso, "w")
 input = sys.stdin.readline
 
+
 def maps():
-    return map(int , input().split())
+    return map(int, input().split())
+
 
 def dprint(*args):
     [print(i) for i in args]
+
 
 # for _ in range(int(input())):
 #   n = int(input()) ; a = list(maps())
@@ -23,7 +34,7 @@ def dprint(*args):
 #           print(s[1] - s[0] , s[1]) if s[1] - s[0] > max(a) else print(-1)
 #       else:
 #           print(-1)
-#           
+#
 
 # for _ in range(int(input())):
 #   n = int(input()) ; a =list(maps())
@@ -64,7 +75,6 @@ for _ in range(int(input())):
     print(math.ceil(x))
 
 """
-
 
 
 """

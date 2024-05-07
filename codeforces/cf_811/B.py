@@ -1,5 +1,5 @@
 # lOOKOUT FOR THE EDGE CASES
-from collections import deque, defaultdict
+from collections import defaultdict
 
 
 def sol():

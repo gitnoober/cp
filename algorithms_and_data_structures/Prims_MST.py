@@ -1,7 +1,7 @@
 """
 	Algorithm for finding an MST
 
-	Initially, you maintain two disjoint sets namely a set which contains of all the vertices in the MST and other 
+	Initially, you maintain two disjoint sets namely a set which contains of all the vertices in the MST and other
 	vertices which are not.
 
 	1) You initialize a src  and,
@@ -13,7 +13,7 @@
 
 
 def PrimeMST(n, adj):
-    inf = float('inf')
+    inf = float("inf")
     min_e = [[inf, -1] for _ in range(n)]
     selected = [False] * n
     min_e[0][0] = 0
@@ -33,7 +33,7 @@ def PrimeMST(n, adj):
         selected[v] = True
         tot += min_e[v][0]
 
-        if min_e[v][1] != - 1:
+        if min_e[v][1] != -1:
             mst_edges.append((v, min_e[v][1]))  # since it's unidirected
 
         for to in range(n):

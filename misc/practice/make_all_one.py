@@ -16,7 +16,6 @@ class MakeAllOne:
 
         i = 0
         while i < len(d[0]):
-            l = 1
             j = i + 1
             while j < len(d[0]) and d[0][j] - d[0][i] + 1 <= K:
                 j += 1

@@ -6,13 +6,20 @@ class Solution:
         cnt = 0
         for r in range(row):
             for c in range(col):
-                if grid[r][c] == '1' and (r, c) not in vis:
+                if grid[r][c] == "1" and (r, c) not in vis:
                     stack = [(r, c)]
                     vis.add((r, c))
                     for x1, y1 in stack:
                         for dx, dy in a:
                             x, y = x1 + dx, y1 + dy
-                            if x < row and y < col and x >= 0 and y >= 0 and grid[x][y] == '1' and (x, y) not in vis:
+                            if (
+                                x < row
+                                and y < col
+                                and x >= 0
+                                and y >= 0
+                                and grid[x][y] == "1"
+                                and (x, y) not in vis
+                            ):
                                 stack.append((x, y))
                                 vis.add((x, y))
                     ok = True
@@ -28,7 +35,7 @@ class Solution:
                             if (x, y) in vis:
                                 continue
                             # print(x, y, row, col)
-                            if grid[x][y] == '1':
+                            if grid[x][y] == "1":
                                 ok = False
                                 break
                         if not ok:
@@ -40,8 +47,12 @@ class Solution:
         return cnt
 
 
-grid = [["1", "1", "0", "0", "0"], ["1", "1", "0", "0", "0"],
-        ["0", "0", "1", "0", "0"], ["0", "0", "0", "1", "1"]]
+grid = [
+    ["1", "1", "0", "0", "0"],
+    ["1", "1", "0", "0", "0"],
+    ["0", "0", "1", "0", "0"],
+    ["0", "0", "0", "1", "1"],
+]
 obj = Solution()
 x = obj.numIslands(grid)
 print(x, "ans")

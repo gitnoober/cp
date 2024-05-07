@@ -1,12 +1,12 @@
 import sys
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps(): return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
-from collections import deque, defaultdict
-from functools import lru_cache
+def maps():
+    return [int(i) for i in input().split()]
 
 
 def A():
@@ -15,7 +15,7 @@ def A():
 
 
 def B():
-    t = ['H', '2B', 'HR', '3B']
+    t = ["H", "2B", "HR", "3B"]
     ok = [False] * 4
     for _ in range(4):
         s = input()
@@ -23,12 +23,12 @@ def B():
             if t[i] == s:
                 ok[i] = True
 
-    print('Yes' if all(ok) else 'No')
+    print("Yes" if all(ok) else "No")
 
 
 def C():
     s = input()
-    t = 'chokudai'
+    t = "chokudai"
     n = len(s)
     m = len(t)
     mod = int(1e9 + 7)

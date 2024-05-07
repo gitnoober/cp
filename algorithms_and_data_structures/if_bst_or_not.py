@@ -2,7 +2,7 @@
 Check if a tree is a BST or not
 
 Different Approaches:
-1. Check the minimum value of the right subtree of a node and the maximum value of the left subtree of a node, 
+1. Check the minimum value of the right subtree of a node and the maximum value of the left subtree of a node,
 and if the min value if greater than root node and the max value is less than the root node then the tree is a BST.
 Not optimal.
 
@@ -22,7 +22,7 @@ class Node:
 
 
 # Approach 1
-minv = [float('inf')]
+minv = [float("inf")]
 maxv = [0]
 
 
@@ -33,7 +33,7 @@ def minVal(node):
     minVal(node.left)
     minVal(node.right)
     val = minv[0]
-    minv[0] = float('inf')
+    minv[0] = float("inf")
     return val
 
 
@@ -64,10 +64,9 @@ def bfsutil(root):
     return True
 
 
-
 # Approach 2
-max_v = float('inf')
-min_v = -float('inf')
+max_v = float("inf")
+min_v = -float("inf")
 
 
 def bfsutil(root, max_v, min_v):
@@ -77,7 +76,9 @@ def bfsutil(root, max_v, min_v):
     if root.data < min_v or root.data > max_v:
         return False
 
-    return (bfsutil(root.left, root.data - 1, min_v) and bfsutil(root.right, max_v, root.data + 1))
+    return bfsutil(root.left, root.data - 1, min_v) and bfsutil(
+        root.right, max_v, root.data + 1
+    )
 
 
 # Approach 3
@@ -106,7 +107,7 @@ def bfsutil(root):
     return bfsutil(root.right)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     root = Node(3)
     root.left = Node(2)
     root.right = Node(5)

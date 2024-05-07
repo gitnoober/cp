@@ -45,7 +45,7 @@ class SqrtDecomposition:
                 summ += self.arr[i]
         return summ
 """
-Incase of the addition only , 
+Incase of the addition only ,
 update - O(1)
 query - O(sqrt(n))
 make - O(n)
@@ -54,5 +54,3 @@ Incase of other tasks such as finding the minimum / maximum of sub-array
 update - O(sqrt(n)) -- have to update the whole block , change the implementation
 query - O(sqrt(n))
 make - O(n)
-
-	

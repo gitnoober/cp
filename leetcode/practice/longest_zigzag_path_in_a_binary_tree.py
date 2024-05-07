@@ -7,7 +7,7 @@
 class Solution:
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
         N = 10**5
-        dist = [1] * N
+        [1] * N
         st = []
         ans = 0
         if root.left:

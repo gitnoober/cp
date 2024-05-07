@@ -1,19 +1,24 @@
-
 import sys
 import pprint
 import logging
 from logging import getLogger
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+logging.basicConfig(
+    format="%(message)s",
+    level=logging.WARNING,
+)
 logger = getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
+
 
 # 30 MINUTES ATLEAST !!!!
 
@@ -40,32 +45,30 @@ def main():
             mx2 = max(mx2, now[i][1]) - 1
 
     need.sort()
-    res = ['U'] * mx1 + ['L'] * mx2
+    res = ["U"] * mx1 + ["L"] * mx2
     curR = curC = 1
     for i in range(k):
         dx = need[i][0] - curR
         dy = need[i][1] - curC
 
         if dx < 0:
-            res += ['U'] * (-dx)
+            res += ["U"] * (-dx)
             curR += dx
         elif dx > 0:
-            res += ['D'] * dx
+            res += ["D"] * dx
             curR += dx
 
         if dy < 0:
-            res += ['L'] * (-dy)
+            res += ["L"] * (-dy)
             curC += dy
 
         elif dy > 0:
-            res += ['R'] * dy
+            res += ["R"] * dy
             curC += dy
 
     print(len(res))
-    print(''.join(res))
-
-    
+    print("".join(res))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

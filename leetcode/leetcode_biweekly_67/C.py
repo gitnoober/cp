@@ -1,11 +1,9 @@
-
-
 def maximumDetonation(bombs):
 
     def check(p1, p2):
         x1, y1, r1 = p1
         x2, y2, r2 = p2
-        return r1 * r1 >= ((x2 - x1)**2) + ((y2 - y1)**2)
+        return r1 * r1 >= ((x2 - x1) ** 2) + ((y2 - y1) ** 2)
 
     n = len(bombs)
     gr = [[] for _ in range(n)]
@@ -21,7 +19,6 @@ def maximumDetonation(bombs):
         vis = set()
         q = [start]
         vis.add(start)
-        res = 0
 
         for x in q:
             for v in gr[x]:

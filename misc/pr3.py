@@ -1,5 +1,4 @@
 from math import gcd
-from sys import stdout
 
 
 def is_prime(n):

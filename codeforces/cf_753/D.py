@@ -1,16 +1,18 @@
-inf = float('inf')
+inf = float("inf")
 import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 
 # sys.setrecursionlimit(10 ** 9)
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps(): return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+def maps():
+    return [int(i) for i in input().split()]
 
 
 logging.basicConfig(
@@ -22,17 +24,17 @@ logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
 
 
 for _ in range(*maps()):
-    n, = maps()
+    (n,) = maps()
     a = list(maps())
     s = input()
     R = []
     B = []
     for i in range(n):
-        if s[i] == 'R':
+        if s[i] == "R":
             R.append(a[i])
         else:
             B.append(a[i])
@@ -53,8 +55,8 @@ for _ in range(*maps()):
         ans.append(ct)
         ct += 1
     if list(range(1, n + 1)) == ans:
-        print('YES')
+        print("YES")
     else:
-        print('NO')
+        print("NO")
 
-#It is possible to sort all the Blue color numbers to take the place of 1 to k numbers and the red number to take the place of k+1 , n
+# It is possible to sort all the Blue color numbers to take the place of 1 to k numbers and the red number to take the place of k+1 , n

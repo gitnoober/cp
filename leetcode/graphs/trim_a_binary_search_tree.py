@@ -6,12 +6,12 @@
 #         self.right = right
 class Solution:
     def trimBST(self, root, low: int, high: int):
-        
+
         # def recur(root,lo,hi,tail=None):
         #     if root:
         #         if lo <= root.val <= hi:
         #             recur(root.left,lo,hi,root)
-                    
+
 
 
 

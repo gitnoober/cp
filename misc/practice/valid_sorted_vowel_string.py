@@ -1,12 +1,11 @@
-from itertools import permutations, combinations
+from itertools import combinations
 
 
 def naive(n):
-    v = ['a', 'e', 'i', 'o', 'u']
+    v = ["a", "e", "i", "o", "u"]
     t = []
     for i in v:
         t.extend([i] * n)
-    cnt = 0
     se = set()
 
     for i in combinations(t, n):
@@ -26,7 +25,7 @@ class ValidVowelString:
             for j in range(5):
                 for k in range(5):
                     if k <= j:
-                        """ k <= j , the number of strings which ends with j is equal to the number of strings with length i - 1 which ends with a smaller character than j + number of strings which end with j"""
+                        """k <= j , the number of strings which ends with j is equal to the number of strings with length i - 1 which ends with a smaller character than j + number of strings which end with j"""
                         dp[i][j] += dp[i - 1][k]
                         dp[i][j] %= mod
 

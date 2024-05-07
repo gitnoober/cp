@@ -1,8 +1,13 @@
 import sys
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps():return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+def maps():
+    return [int(i) for i in input().split()]
+
 
 from collections import defaultdict
 
@@ -30,20 +35,24 @@ def prime_list(n):
         res.append(3)
     if n > 4:
         sieve = prime_sieve(n + 1)
-        res.extend(3 * i + 1 | 1 for i in range(1, (n + 1) // 3 + (n % 6 == 1)) if not (sieve[i >> 3] >> (i & 7)) & 1)
+        res.extend(
+            3 * i + 1 | 1
+            for i in range(1, (n + 1) // 3 + (n % 6 == 1))
+            if not (sieve[i >> 3] >> (i & 7)) & 1
+        )
     return res
 
 
 def type1():
-    pr = prime_list((int(1000**0.5)+1))
+    pr = prime_list((int(1000**0.5) + 1))
     for _ in range(*maps()):
-        n, = maps()
+        (n,) = maps()
         a = [*maps()]
 
-        occ = [0]*n
+        occ = [0] * n
         for i in range(n):
             for j in range(11):
-                if a[i]%pr[j]==0:
+                if a[i] % pr[j] == 0:
                     occ[i] = j + 1
                     break
 
@@ -56,7 +65,7 @@ def type1():
         for i in d:
             for j in d[i]:
                 occ[j] = idx
-            idx+=1
+            idx += 1
         print(*occ)
 
     """

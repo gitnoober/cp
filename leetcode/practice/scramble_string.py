@@ -15,15 +15,15 @@ class Solution:
             n = len(s)
             if n == 1 :
                 return s
-                
+
             for i in range(n):
                 x = s[:i]
                 y = s[i:]
                 if x and y :
-                    
+
                 else:
                     return False
-                
+
 
         # for i in range(n1):
             # print(s1[:i], s1[i:])

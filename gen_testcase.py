@@ -1,8 +1,6 @@
-import itertools as it
 import os
 import random
 import sys
-import time
 
 osi, oso = (
     "/Users/priyanshusingh/Documents/cp/input.txt",
@@ -103,7 +101,6 @@ def gaurd():
     tc = 100
     print(tc)
     # xx = []
-    f = "abcdefghijklmnopqrstuvwxyz"
 
     def gen(ttt):
         x = []

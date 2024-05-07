@@ -1,20 +1,14 @@
-
 # DON'T SUBMIT UNLESS YOU'RE ABSOLUTELY SURE OR ATLEAST 70 % SURE !!!
 
-import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 import io
 import os
-import heapq
-import bisect
 
 # sys.setrecursionlimit(10 ** 9)
 
-inf = float('inf')
+inf = float("inf")
 # mod = int(1e9) + 7
 # mod = 998244353
 
@@ -65,6 +59,7 @@ class UnionFind:
     def union(self, a, b):
         self.parent[self.find(b)] = self.find(a)
 
+
 def solve():
 
     n, d = linp()
@@ -99,16 +94,17 @@ def solve():
 
     """
     so all the people till i need to be connected and if you have any saved introductions you can use them to connect to the
-    largest components you know 
+    largest components you know
     """
 
-    print(*[i - 1 for i in res], sep='\n')
+    print(*[i - 1 for i in res], sep="\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
 
-    def linp(): return [int(i) for i in input().split()]
+    def linp():
+        return [int(i) for i in input().split()]
 
     logging.basicConfig(
         format="%(message)s",
@@ -118,5 +114,6 @@ if __name__ == '__main__':
     logger.setLevel(logging.INFO)
 
     def debug(msg, *args):
-        logger.info(f'{msg}={pprint.pformat(args)}')
+        logger.info(f"{msg}={pprint.pformat(args)}")
+
     solve()

@@ -1,22 +1,15 @@
 class Solution:
     def jump(self, nums) -> int:
         steps = 0
-        pos =  len(nums) - 1
+        pos = len(nums) - 1
 
-        while pos != 0 :
+        while pos != 0:
             for i in range(pos):
                 if nums[i] + i >= pos:
-                    steps+=1
+                    steps += 1
                     pos = i
                     break
         return steps
-
-
-
-
-
-
-
 
 
 """
@@ -25,9 +18,6 @@ be possible to the current position.
 """
 
 
-
-
-
-nums = [2,3,0,1,4]
+nums = [2, 3, 0, 1, 4]
 obj = Solution().jump(nums)
 print(obj)

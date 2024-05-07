@@ -1,11 +1,9 @@
-
-
 class Solution:
     def canVisitAllRooms(self, rooms):
         n = len(rooms)
-        vis = [False]*n
+        vis = [False] * n
         q = [0]
-        vis[0]=True
+        vis[0] = True
         for i in q:
             for u in rooms[i]:
                 if vis[u]:
@@ -21,6 +19,7 @@ class Solution:
 
         return ok
 
-rooms = [[1,3],[3,0,1],[2],[0]]
+
+rooms = [[1, 3], [3, 0, 1], [2], [0]]
 obj = Solution().canVisitAllRooms(rooms)
 print(obj)

@@ -1,58 +1,59 @@
-inf = float('inf')
+inf = float("inf")
 import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 
 # sys.setrecursionlimit(10 ** 9)
 
+
 def solve():
 
-    tc, = maps()
+    (tc,) = maps()
 
     for i in range(tc):
-        n, = maps()
+        (n,) = maps()
         s = input()
         a, b = [], []
 
-        if s[0] == s[-1] == '1':
-            k = s.count('1')
+        if s[0] == s[-1] == "1":
+            k = s.count("1")
             if k % 2:
-                print('NO')
+                print("NO")
             else:
                 c = alt = 0
                 for i in range(n):
-                    if s[i] == '1':
+                    if s[i] == "1":
                         if c < k // 2:
-                            a += ['(']
-                            b += ['(']
+                            a += ["("]
+                            b += ["("]
                         else:
-                            a += [')']
-                            b += [')']
+                            a += [")"]
+                            b += [")"]
                         c += 1
                     else:
                         if alt == 0:
-                            a += ['(']
-                            b += [')']
+                            a += ["("]
+                            b += [")"]
                         else:
-                            a += [')']
-                            b += ['(']
+                            a += [")"]
+                            b += ["("]
                         alt ^= 1
-                a = ''.join(a)
-                b = ''.join(b)
-                print('YES', a, b, sep='\n')
+                a = "".join(a)
+                b = "".join(b)
+                print("YES", a, b, sep="\n")
 
         else:
-            print('NO')
+            print("NO")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # input = sys.stdin.buffer.readline
-    def input(): return sys.stdin.readline().rstrip("\r\n")
+    def input():
+        return sys.stdin.readline().rstrip("\r\n")
 
-    def maps(): return [int(i) for i in input().split()]
+    def maps():
+        return [int(i) for i in input().split()]
 
     logging.basicConfig(
         format="%(message)s",
@@ -62,7 +63,6 @@ if __name__ == '__main__':
     logger.setLevel(logging.INFO)
 
     def debug(msg, *args):
-        logger.info(f'{msg}={pprint.pformat(args)}')
+        logger.info(f"{msg}={pprint.pformat(args)}")
 
     solve()
-

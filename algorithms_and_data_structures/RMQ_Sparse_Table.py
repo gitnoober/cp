@@ -1,17 +1,12 @@
-import os
-import sys
-import time
-import math as mt
-import pprint
-import itertools as it
-import operator as op
-import bisect as bs
-import functools as fn
-from collections import deque, defaultdict, OrderedDict, Counter, ChainMap
 maxx, localsys, mod = 1 << 60, 0, int(1e9 + 7)
-def nCr(n, r): return reduce(mul, range(n - r + 1, n + 1), 1) // factorial(r)
 
-def ceil(n, x): return (n + x - 1) // x
+
+def nCr(n, r):
+    return reduce(mul, range(n - r + 1, n + 1), 1) // factorial(r)
+
+
+def ceil(n, x):
+    return (n + x - 1) // x
 
 
 def query(l, r, func):
@@ -36,6 +31,7 @@ def build(n, func=sum):
             i += 1
 
     return st, log
+
 
 # st[i][j] --> the value of func(sum/min/gcd) from ith position and of length 2**j till i + 2**j
 # st[i][j] = func(st[i][2**(j-1)] , st[i + 2**(j-1)][j-1]) --- > i + 2**(j-1) to i + 2**(j-1) + 2**(j-1) = i + 2 **j

@@ -1,16 +1,18 @@
-inf = float('inf')
+inf = float("inf")
 import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 
-sys.setrecursionlimit(10 ** 7)
+sys.setrecursionlimit(10**7)
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps(): return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+def maps():
+    return [int(i) for i in input().split()]
 
 
 logging.basicConfig(
@@ -22,13 +24,13 @@ logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
 
 
 def A():
     s = input()
     i = 0
-    while i < len(s) and s[i] != '.':
+    while i < len(s) and s[i] != ".":
         i += 1
     if int(s[i + 1]) >= 5:
         print(int(s[:i]) + 1)
@@ -37,7 +39,7 @@ def A():
 
 
 def B():
-    n, = maps()
+    (n,) = maps()
     se = set()
     for i in range(n):
         x = [*maps()]
@@ -46,7 +48,7 @@ def B():
 
 
 def C():
-    n, = maps()
+    (n,) = maps()
     # learn nth move
     gr = [[] for _ in range(n + 1)]
     d = {}
@@ -68,6 +70,7 @@ def C():
         for v in gr[u]:
             if not learnt[v]:
                 dfs(v)
+
     dfs(n)
     print(ans)
     # print(gr)

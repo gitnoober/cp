@@ -73,6 +73,7 @@
 # # print "\nPostorder traversal of binary tree is"
 # # printPostorder(root)
 
+
 # N_ary_Tree Python program
 class Node:
     def __init__(self, data, children=None, parent=None):
@@ -112,9 +113,9 @@ class N_ary_Tree:
     def lock(self, val, uid):
         node = self.find_node(self.root, val)
         parent_node = node.parent
-        if node.locked == False and parent_node.locked == False:
+        if node.locked is False and parent_node.locked is False:
             for child in node.children:
-                if child.locked == False:
+                if child.locked is False:
                     continue
                 else:
                     return False
@@ -135,7 +136,7 @@ class N_ary_Tree:
     def upgrade(self, val, uid):
         node = self.find_node(self.root, val)
         for child in node.children:
-            if child.locked == True and child.uid == uid:
+            if child.locked is True and child.uid == uid:
                 continue
             else:
                 return False
@@ -149,13 +150,14 @@ class N_ary_Tree:
     def print_tree(self, node, str_aux):
         if node is None:
             return ""
-        str_aux += str(node) + " Locked=" + str(node.locked) + \
-            "UID:" + str(node.uid) + '('
+        str_aux += (
+            str(node) + " Locked=" + str(node.locked) + "UID:" + str(node.uid) + "("
+        )
         for i in range(len(node.children)):
             child = node.children[i]
-            end = ',' if i < len(node.children) - 1 else ''
+            end = "," if i < len(node.children) - 1 else ""
             str_aux = self.print_tree(child, str_aux) + end
-        str_aux += ')'
+        str_aux += ")"
         return str_aux
 
     def __str__(self):
@@ -188,19 +190,19 @@ class N_ary_Tree:
 #                 break
 #         key.clear()
 #         key = temp
-    # print(tree)
+# print(tree)
 
-    # for i in range(que):
-    #     temp = input().split()
-    #     op_type = int(temp[0])
-    #     node = temp[1]
-    #     user_id = int(temp[2])
-    #     if op_type == 1:
-    #         print(tree.lock(node, user_id))
-    #     elif op_type == 2:
-    #         print(tree.unlock(node, user_id))
-    #     elif op_type == 3:
-    #         print(tree.upgrade(node, user_id))
+# for i in range(que):
+#     temp = input().split()
+#     op_type = int(temp[0])
+#     node = temp[1]
+#     user_id = int(temp[2])
+#     if op_type == 1:
+#         print(tree.lock(node, user_id))
+#     elif op_type == 2:
+#         print(tree.unlock(node, user_id))
+#     elif op_type == 3:
+#         print(tree.upgrade(node, user_id))
 
 # 'ccc' - 0
 
@@ -263,8 +265,17 @@ class N_ary_Tree:
 # sub-sub - civics,geo
 # link - []
 
+
 class Node:
-    def __init__(self, subject=None, klass=None, medium=None, category=None, sub_subject=None, links=[]):
+    def __init__(
+        self,
+        subject=None,
+        klass=None,
+        medium=None,
+        category=None,
+        sub_subject=None,
+        links=[],
+    ):
         # self.data = data
         # self.children = children or []
         # self.parent = parent or []
@@ -279,6 +290,8 @@ class Node:
 
     # def __str__(self):
     #     return str(self.data)
+
+
 # N = 1000
 # visited = [False]*N
 # adj = [[] for _ in range(N)]
@@ -291,7 +304,7 @@ num_params = 6
 for _ in range(n):
     dic = {}
     for __ in range(num_params):
-        s = input().split(':')
+        s = input().split(":")
         dic[s[0]] = s[1]
     input()
     A.append(dic)
@@ -300,11 +313,11 @@ for _ in range(n):
 
 def make_tree(A):
     # sample inputs can be always be called in real-world as it is stored in db
-    all_subject = ['math', 'chemistry']
-    all_class = ['6', '7', '8', '9', '10', '11', '12']
-    all_medium = ['hindi', 'english', 'bengali']
-    all_category = ['ncert', 'rdsharma']
-    all_sub_subject = ['civics', 'null', 'geography']
+    all_subject = ["math", "chemistry"]
+    all_class = ["6", "7", "8", "9", "10", "11", "12"]
+    all_medium = ["hindi", "english", "bengali"]
+    all_category = ["ncert", "rdsharma"]
+    all_sub_subject = ["civics", "null", "geography"]
     tree = {}
     for i in all_subject:
         tree[i] = {}
@@ -315,7 +328,7 @@ def make_tree(A):
                 for l in all_category:
                     tree[i][j][k][l] = {}
                     for m in all_sub_subject:
-                        tree[i][j][k][l][m] = {'links': []}
+                        tree[i][j][k][l][m] = {"links": []}
 
     pprint(tree)
 

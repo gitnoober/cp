@@ -1,31 +1,37 @@
-
 import os
 import sys
 from io import BytesIO, IOBase
 import math as mt
-import itertools as it
 import operator as op
-import bisect as bs
-import heapq as hp
 from functools import reduce
-from io import BytesIO, IOBase
-from collections import deque, defaultdict, OrderedDict, Counter, ChainMap, _chain
-def nCr(n, r): return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
-
-def ceil(a, b): return (a + b - 1) // b
-
-def lcm(a, b): return a * b // mt.gcd(a, b)
 
 
-gcdm = lambda *args: reduce(mt.gcd, args, 0)
+def nCr(n, r):
+    return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
 
-def lcm(a, b): return a * b // mt.gcd(a, b)
+
+def ceil(a, b):
+    return (a + b - 1) // b
 
 
-lcmm = lambda *args: reduce(lcm, args, 1)
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def gcdm(*args):
+    return reduce(mt.gcd, args, 0)
+
+
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def lcmm(*args):
+    return reduce(lcm, args, 1)
 
 _str = str
-str = lambda x=b"": x if type(x) is bytes else _str(x).encode()
+def str(x=b""):
+    return x if type(x) is bytes else _str(x).encode()
 
 BUFSIZE = 8192
 
@@ -75,7 +81,11 @@ class IOWrapper(IOBase):
 
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
 
 # end region
 
@@ -83,12 +93,16 @@ def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
 # mod = int(1e9) + 7
-inf = float('inf')
-
-def linp(): return map(int, input().split())
+inf = float("inf")
 
 
-def BFS(vis, q, gr):  # this works because the first vertex that visits a node is the nearest distance from that node
+def linp():
+    return map(int, input().split())
+
+
+def BFS(
+    vis, q, gr
+):  # this works because the first vertex that visits a node is the nearest distance from that node
     dist = [0] * len(gr)
 
     for v in q:
@@ -101,7 +115,7 @@ def BFS(vis, q, gr):  # this works because the first vertex that visits a node i
 
 
 def solve():
-    x = input()
+    input()
 
     n, k = linp()
     q = [i - 1 for i in linp()]
@@ -138,7 +152,7 @@ def solve():
             ok = True
             break
 
-    print('YES' if ok else 'NO')
+    print("YES" if ok else "NO")
 
 
 for _ in range(*linp()):

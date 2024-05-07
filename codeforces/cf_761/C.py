@@ -1,19 +1,24 @@
-
 import sys
 import pprint
 import logging
 from logging import getLogger
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+logging.basicConfig(
+    format="%(message)s",
+    level=logging.WARNING,
+)
 logger = getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
+
 
 # 30 MINUTES ATLEAST !!!!
 
@@ -45,6 +50,6 @@ for i in range(int(input())):
             fl = 1
             break
     if fl:
-        print('-1')
+        print("-1")
     else:
         print(cnt)

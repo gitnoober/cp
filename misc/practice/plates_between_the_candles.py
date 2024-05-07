@@ -1,16 +1,18 @@
-inf = float('inf')
+inf = float("inf")
 import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 
 # sys.setrecursionlimit(10 ** 9)
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps(): return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+def maps():
+    return [int(i) for i in input().split()]
 
 
 logging.basicConfig(
@@ -22,7 +24,7 @@ logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
 
 
 def platesBetweenCandles(s, queries):
@@ -49,7 +51,7 @@ def platesBetweenCandles(s, queries):
 
     def bi1(arr, val):
         l, h = 0, len(arr) - 1
-        idx = - 1
+        idx = -1
         while l <= h:
             m = (l + h) >> 1
             if arr[m] >= val:
@@ -61,7 +63,7 @@ def platesBetweenCandles(s, queries):
 
     def bi2(arr, val):
         l, h = 0, len(arr) - 1
-        idx = - 1
+        idx = -1
         while l <= h:
             m = (l + h) >> 1
             if arr[m] <= val:
@@ -74,7 +76,7 @@ def platesBetweenCandles(s, queries):
     indices = []
 
     for i in range(n):
-        if s[i] == '*':
+        if s[i] == "*":
             add(i + 1, 1)
         else:
             indices.append(i)
@@ -83,7 +85,7 @@ def platesBetweenCandles(s, queries):
         idx1 = bi1(indices, li)
         idx2 = bi2(indices, ri)
 
-        if idx1 != -1 and idx2 != - 1:
+        if idx1 != -1 and idx2 != -1:
             x, y = indices[idx1], indices[idx2]
             ans = get_sum_segment(x + 1, y + 1)
         else:

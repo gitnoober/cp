@@ -1,20 +1,25 @@
-
 import sys
 import pprint
 import logging
 from logging import getLogger
 import bisect
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
-logging.basicConfig(format="%(message)s", level=logging.WARNING,)
+logging.basicConfig(
+    format="%(message)s",
+    level=logging.WARNING,
+)
 logger = getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
+
 
 # 30 MINUTES ATLEAST !!!!
 
@@ -47,11 +52,11 @@ def ok(val):
     return ans
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     n, m, d = map(int, input().split())
     r = list(map(int, input().split()))
     s = list(map(int, input().split()))
-    l, h = -10**1, 10**11
+    l, h = -(10**1), 10**11
     ANS = -111
 
     while l <= h:

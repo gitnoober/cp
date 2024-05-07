@@ -3,7 +3,6 @@ Find path from root to n1 and root to n2
 """
 
 
-
 class Node:
     # Constructor to create a new binary node
     def __init__(self, key):
@@ -20,7 +19,9 @@ def findpath(path, src, dest):
     if src.key == dest:
         return True
 
-    if (src.left != None and findpath(path, src.left, dest)) or (src.right != None and findpath(path, src.right, dest)):
+    if (src.left is not None and findpath(path, src.left, dest)) or (
+        src.right is not None and findpath(path, src.right, dest)
+    ):
         return True
 
     path.pop()

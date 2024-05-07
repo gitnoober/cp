@@ -1,5 +1,3 @@
-from collections import deque
-
 N = int(input())
 for _ in range(N):
     n, q = map(int, input().split())

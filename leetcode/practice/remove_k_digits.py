@@ -22,7 +22,7 @@ class Solution:
                 print(num, "pp")
                 break
             # print(10**10 - (num * (num + 1) // 2))
-        return ''.join(ans)
+        return "".join(ans)
 
 
 num = "1432219"

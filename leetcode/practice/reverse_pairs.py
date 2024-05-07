@@ -30,7 +30,7 @@ class Solution:
         a.sort(key=lambda x: (x[0], -x[1]))
         arr = [0] * N
         cnt = 0
-        d = defaultdict(int)
+        defaultdict(int)
         i = 0
         # print(a)
         while i < N:

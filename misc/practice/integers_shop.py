@@ -12,9 +12,9 @@ def input():
 def sol1():
     n = int(input())
     maxLen = 0
-    minL = float('inf')
+    minL = float("inf")
     maxR = 0
-    minC = float('inf')
+    minC = float("inf")
     v1 = v2 = None
     for _ in range(n):
         l, r, val = map(int, input().split())

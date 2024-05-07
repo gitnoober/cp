@@ -35,6 +35,6 @@ class Solution:
         return s[i1:i2]
 
 
-s = 'aba'
+s = "aba"
 obj = Solution().longestPalindrome(s)
 print(obj)

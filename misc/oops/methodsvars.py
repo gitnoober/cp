@@ -14,9 +14,9 @@ class Student:
     @staticmethod
     def get_age(age):
         if age < 17:
-            print('Baccha')
+            print("Baccha")
         else:
-            print('Bara Baccha')
+            print("Bara Baccha")
 
 
 s1 = Student("sia", 10)
@@ -43,11 +43,11 @@ def shout(text):
     return text.upper()
 
 
-print(shout('Hello'))
+print(shout("Hello"))
 
 yell = shout
 
-print(yell('Hello'))
+print(yell("Hello"))
 
 
 """
@@ -67,7 +67,7 @@ def whisper(text):
 def greet(func):
     # storing the function in a variable
     greeting = func("""Hi, I am created by a function passed as an argument.""")
-    print (greeting)
+    print(greeting)
 
 
 greet(shout)
@@ -84,12 +84,12 @@ Actual usage
 #     print("Gfg")
 
 
-'''Above code is equivalent to -
+"""Above code is equivalent to -
 
 def hello_decorator():
     print("Gfg")
 
-hello_decorator = gfg_decorator(hello_decorator)'''
+hello_decorator = gfg_decorator(hello_decorator)"""
 
 
 """

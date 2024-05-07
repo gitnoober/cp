@@ -9,7 +9,7 @@ class Solution:
                 right += [i]
             else:
                 s, e = min(s, i[0]), max(e, i[1])
-        x = [left] + [[s, e]] + [right]
+        [left] + [[s, e]] + [right]
         if left:
             ans = left
         ans += [[s, e]]

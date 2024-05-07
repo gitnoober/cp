@@ -1,27 +1,31 @@
 import sys
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps():return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
-n , s = maps()
+def maps():
+    return [int(i) for i in input().split()]
+
+
+n, s = maps()
 if n == 1:
-	if s == 1 and s == 1:
-		print('NO')
-	else:
-		print('YES',s,s - 1,sep='\n')
-	exit()
+    if s == 1 and s == 1:
+        print("NO")
+    else:
+        print("YES", s, s - 1, sep="\n")
+    exit()
 
-if s >= n*2:
-	print('YES')
-	print('2 '*(n-1) , s - 2*(n-1),sep='')
-	print(1)
-	exit()
+if s >= n * 2:
+    print("YES")
+    print("2 " * (n - 1), s - 2 * (n - 1), sep="")
+    print(1)
+    exit()
 
 else:
-	print('NO')
-	exit()
+    print("NO")
+    exit()
 
 # x = s - (n-2)
 
@@ -38,7 +42,7 @@ else:
 # k = (n-2) + 1
 
 
-# sum_ = 0 
+# sum_ = 0
 # i = 0
 # ok = False
 # sum_2 = s

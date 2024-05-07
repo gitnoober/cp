@@ -24,7 +24,7 @@ class Solution:
     def kInversePairs(self, n: int, k: int) -> int:
         N = 1010
         tree = FenwickTree(N)
-        for 
+        for
 
 
 n = 3

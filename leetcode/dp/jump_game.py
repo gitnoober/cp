@@ -1,5 +1,3 @@
-
-
 class Solution:
     def canJump(self, nums) -> bool:
         n = len(nums)
@@ -11,23 +9,15 @@ class Solution:
         #             dp[j] = True
         # return dp[0]
         target = n - 1
-        for i in range(n-2,-1,-1):
+        for i in range(n - 2, -1, -1):
             if i + nums[i] >= target:
                 target = i
         return target == 0
 
 
-
-
-
-
-
-
-nums = [2,3,1,1,4]
+nums = [2, 3, 1, 1, 4]
 obj = Solution().canJump(nums)
 print(obj)
-
-
 
 
 """

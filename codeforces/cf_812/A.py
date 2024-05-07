@@ -15,7 +15,6 @@ def sol():
     ya.sort()
 
     ans = 0
-    ok = False
     if xa[0] < 0 and xa[-1] > 0:
         ans += abs(xa[0]) + abs(xa[-1])
 

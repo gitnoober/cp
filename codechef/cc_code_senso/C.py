@@ -1,16 +1,19 @@
-inf = float('inf')
+inf = float("inf")
 import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 from math import gcd
-sys.setrecursionlimit(10 ** 7)
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
+sys.setrecursionlimit(10**7)
 
-def maps(): return [int(i) for i in input().split()]
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+def maps():
+    return [int(i) for i in input().split()]
 
 
 logging.basicConfig(
@@ -22,7 +25,7 @@ logger.setLevel(logging.INFO)
 
 
 def debug(msg, *args):
-    logger.info(f'{msg}={pprint.pformat(args)}')
+    logger.info(f"{msg}={pprint.pformat(args)}")
 
 
 inn = [0] * 1000001
@@ -51,11 +54,11 @@ def dfs(x, p):
     return gcd_subtree[x]
 
 
-t, = maps()
+(t,) = maps()
 while t:
     t -= 1
     timer = 1
-    n, = maps()
+    (n,) = maps()
     v = [[] for _ in range(n + 1)]
     for i in range(n - 1):
         a, b = maps()

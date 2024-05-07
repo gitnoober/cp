@@ -2,30 +2,39 @@ import os
 import sys
 from io import BytesIO, IOBase
 import math as mt
-import itertools as it
 import operator as op
-import bisect as bs
-import heapq as hp
 from functools import reduce
-from io import BytesIO, IOBase
-from collections import deque, defaultdict, OrderedDict, Counter, ChainMap, _chain
+from collections import defaultdict
+
 maxx, localsys, mod = 1 << 60, 0, int(1e9 + 7)
-def nCr(n, r): return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
-
-def ceil(a, b): return (a + b - 1) // b
-
-def lcm(a, b): return a * b // mt.gcd(a, b)
 
 
-gcdm = lambda *args: reduce(mt.gcd, args, 0)
+def nCr(n, r):
+    return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
 
-def lcm(a, b): return a * b // mt.gcd(a, b)
+
+def ceil(a, b):
+    return (a + b - 1) // b
 
 
-lcmm = lambda *args: reduce(lcm, args, 1)
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def gcdm(*args):
+    return reduce(mt.gcd, args, 0)
+
+
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def lcmm(*args):
+    return reduce(lcm, args, 1)
 
 _str = str
-str = lambda x=b"": x if type(x) is bytes else _str(x).encode()
+def str(x=b""):
+    return x if type(x) is bytes else _str(x).encode()
 
 BUFSIZE = 8192
 
@@ -75,19 +84,25 @@ class IOWrapper(IOBase):
 
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
 
 # end region
 
 
-def maps(): return map(int, input().split())
+def maps():
+    return map(int, input().split())
+
 
 #   THINK ABOUT THE EDGE CASES ..........
 
 #   DON'T SUBMIT UNLESS YOU ARE ABSOLUTELY SURE !!!!!
 
 
-N = (1 << 20)
+N = 1 << 20
 par = [i for i in range(N)]
 
 
@@ -97,7 +112,7 @@ def find(x):
     return par[x]
 
 
-q, = maps()
+(q,) = maps()
 ans = defaultdict(lambda: -1)
 
 while q:

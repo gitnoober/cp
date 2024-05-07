@@ -1,14 +1,17 @@
 import sys
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps():return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
 
 
-from math import log2
-n, = maps()
+def maps():
+    return [int(i) for i in input().split()]
+
+
+(n,) = maps()
 ans = 0
 for k in range(70):
-	if 1 << k <= n:
-		ans = k
+    if 1 << k <= n:
+        ans = k
 print(ans)

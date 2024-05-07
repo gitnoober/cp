@@ -1,40 +1,40 @@
-
 import array
-import bisect as bs
-import heapq as hp
-import itertools as it
 import math as mt
 import operator as op
 import os
 import sys
 
-from collections import ChainMap
-from collections import Counter
-from collections import OrderedDict
-from collections import _chain
-from collections import defaultdict
-from collections import deque
 from functools import reduce
 from io import BytesIO
-from io import BytesIO
 from io import IOBase
-from io import IOBase
-def nCr(n, r): return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
-
-def ceil(a, b): return (a + b - 1) // b
-
-def lcm(a, b): return a * b // mt.gcd(a, b)
 
 
-gcdm = lambda *args: reduce(mt.gcd, args, 0)
+def nCr(n, r):
+    return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
 
-def lcm(a, b): return a * b // mt.gcd(a, b)
+
+def ceil(a, b):
+    return (a + b - 1) // b
 
 
-lcmm = lambda *args: reduce(lcm, args, 1)
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def gcdm(*args):
+    return reduce(mt.gcd, args, 0)
+
+
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def lcmm(*args):
+    return reduce(lcm, args, 1)
 
 _str = str
-str = lambda x=b"": x if type(x) is bytes else _str(x).encode()
+def str(x=b""):
+    return x if type(x) is bytes else _str(x).encode()
 
 BUFSIZE = 8192
 
@@ -84,7 +84,11 @@ class IOWrapper(IOBase):
 
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
 
 # end region
 
@@ -92,17 +96,21 @@ def input(): return sys.stdin.readline().rstrip("\r\n")
 
 
 # mod = int(1e9) + 7
-inf = float('inf')
-
-def linp(): return map(int, input().split())
+inf = float("inf")
 
 
-inf = float('inf')
+def linp():
+    return map(int, input().split())
+
+
+inf = float("inf")
 
 
 def solve():
     n = int(input())
-    a, b = array.array('l', [0 for i in range(2 * n)]), array.array('l', [0 for i in range(2 * n)])
+    a, b = array.array("l", [0 for i in range(2 * n)]), array.array(
+        "l", [0 for i in range(2 * n)]
+    )
     for i in range(n):
         u, v = map(int, input().split())
         a[i], b[i] = u, v

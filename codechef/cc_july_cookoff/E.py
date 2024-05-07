@@ -2,30 +2,38 @@ import os
 import sys
 from io import BytesIO, IOBase
 import math as mt
-import itertools as it
 import operator as op
-import bisect as bs
-import heapq as hp
 from functools import reduce
-from io import BytesIO, IOBase
-from collections import deque, defaultdict, OrderedDict, Counter, ChainMap, _chain
+
 maxx, localsys, mod = 1 << 60, 0, int(1e9 + 7)
-def nCr(n, r): return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
-
-def ceil(a, b): return (a + b - 1) // b
-
-def lcm(a, b): return a * b // mt.gcd(a, b)
 
 
-gcdm = lambda *args: reduce(mt.gcd, args, 0)
+def nCr(n, r):
+    return reduce(op.mul, range(n - r + 1, n + 1), 1) // mt.factorial(r)
 
-def lcm(a, b): return a * b // mt.gcd(a, b)
+
+def ceil(a, b):
+    return (a + b - 1) // b
 
 
-lcmm = lambda *args: reduce(lcm, args, 1)
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def gcdm(*args):
+    return reduce(mt.gcd, args, 0)
+
+
+def lcm(a, b):
+    return a * b // mt.gcd(a, b)
+
+
+def lcmm(*args):
+    return reduce(lcm, args, 1)
 
 _str = str
-str = lambda x=b"": x if type(x) is bytes else _str(x).encode()
+def str(x=b""):
+    return x if type(x) is bytes else _str(x).encode()
 
 BUFSIZE = 8192
 
@@ -75,61 +83,65 @@ class IOWrapper(IOBase):
 
 
 sys.stdin, sys.stdout = IOWrapper(sys.stdin), IOWrapper(sys.stdout)
-def input(): return sys.stdin.readline().rstrip("\r\n")
+
+
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
 
 # end region
 
 
-def maps(): return map(int, input().split())
+def maps():
+    return map(int, input().split())
+
 
 #   THINK ABOUT THE EDGE CASES ..........
 
 #   DON'T SUBMIT UNLESS YOU ARE ABSOLUTELY SURE !!!!!
 
 
-def naive(n,k):
-	#O(n*n*k)
-	dp = [[0 for _ in range(k+2)] for __ in range(n+1)]
-	dp[0][1] = 1
+def naive(n, k):
+    # O(n*n*k)
+    dp = [[0 for _ in range(k + 2)] for __ in range(n + 1)]
+    dp[0][1] = 1
 
-	for i in range(1 , n):
-		for K in range(1, k+2):
-			for j in range(0 , i):
-				if a[i] == a[j]:
-					dp[i][K] = max(dp[i][K], dp[j][K] + 1)
-				else:
-					dp[i][K] = max(dp[i][K], dp[j][K-1] + 1)
+    for i in range(1, n):
+        for K in range(1, k + 2):
+            for j in range(0, i):
+                if a[i] == a[j]:
+                    dp[i][K] = max(dp[i][K], dp[j][K] + 1)
+                else:
+                    dp[i][K] = max(dp[i][K], dp[j][K - 1] + 1)
 
 
-#Too slow for Python even with fast I/O
+# Too slow for Python even with fast I/O
 
 for _ in range(*maps()):
-	n,k = maps()
-	a = [*maps()]
-	
-	last = [-1]*1001
-	mx_ans = [0]*(k+1)
-	dp = [[1 for _ in range(k+1)] for __ in range(n)]
-	ans = 1
-	for i in range(n):
-		for j in range(k , -1 , -1):
-			if j >= 1:
-				dp[i][j] = mx_ans[j-1] + 1
-				#dp[i][j] = pref[i-1][j] 
+    n, k = maps()
+    a = [*maps()]
 
-			if last[a[i]] != -1:
-				dp[i][j] = max(dp[i][j], dp[last[a[i]]][j] + 1)
+    last = [-1] * 1001
+    mx_ans = [0] * (k + 1)
+    dp = [[1 for _ in range(k + 1)] for __ in range(n)]
+    ans = 1
+    for i in range(n):
+        for j in range(k, -1, -1):
+            if j >= 1:
+                dp[i][j] = mx_ans[j - 1] + 1
+                # dp[i][j] = pref[i-1][j]
 
-			# print(mx_ans, j , " before " , end =' ')
+            if last[a[i]] != -1:
+                dp[i][j] = max(dp[i][j], dp[last[a[i]]][j] + 1)
 
-			mx_ans[j] = max(dp[i][j], mx_ans[j])
+            # print(mx_ans, j , " before " , end =' ')
 
-			# print(mx_ans)
+            mx_ans[j] = max(dp[i][j], mx_ans[j])
 
-			ans = max(ans , dp[i][j])
+            # print(mx_ans)
 
-		last[a[i]] = i
+            ans = max(ans, dp[i][j])
 
-	print(ans)
+        last[a[i]] = i
 
-
+    print(ans)

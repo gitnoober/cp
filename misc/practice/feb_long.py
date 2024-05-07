@@ -1,51 +1,60 @@
 from os import path
-import sys,time
+import sys
+import time
+
 # mod = int(1e9 + 7)
 # import re
-from math import ceil, floor,gcd,log,log2 ,factorial,sqrt
-from collections import defaultdict ,Counter , OrderedDict , deque
-from itertools import combinations ,accumulate
+
 # from string import ascii_lowercase ,ascii_uppercase
 from bisect import *
-from functools import reduce
-from operator import mul
-maxx = float('inf')
-#----------------------------INPUT FUNCTIONS------------------------------------------#
-I = lambda :int(sys.stdin.buffer.readline())
-tup= lambda : map(int , sys.stdin.buffer.readline().split())
-lint = lambda :[int(x) for x in sys.stdin.buffer.readline().split()]
-S = lambda: sys.stdin.readline().strip('\n')
-grid = lambda  r :[lint() for i in range(r)]
-stpr = lambda x : sys.stdout.write(f'{x}' + '\n')
-star = lambda x: print(' '.join(map(str, x)))
+
+maxx = float("inf")
+# ----------------------------INPUT FUNCTIONS------------------------------------------#
+def I():
+    return int(sys.stdin.buffer.readline())
+def tup():
+    return map(int, sys.stdin.buffer.readline().split())
+def lint():
+    return [int(x) for x in sys.stdin.buffer.readline().split()]
+def S():
+    return sys.stdin.readline().strip("\n")
+def grid(r):
+    return [lint() for i in range(r)]
+def stpr(x):
+    return sys.stdout.write(f"{x}" + "\n")
+def star(x):
+    return print(" ".join(map(str, x)))
 localsys = 0
 start_time = time.time()
-if (path.exists('input.txt')):
-    sys.stdin=open('input.txt','r');sys.stdout=open('output.txt','w');
-#left shift --- num*(2**k) --(k - shift)
+if path.exists("input.txt"):
+    sys.stdin = open("input.txt", "r")
+    sys.stdout = open("output.txt", "w")
+
+
+# left shift --- num*(2**k) --(k - shift)
 def s(n):
-    c =0
-    arr =[True]*n
+    c = 0
+    arr = [True] * n
     arr[0] = arr[1] = False
-    for i in range(1, int(n**0.5)+1):
+    for i in range(1, int(n**0.5) + 1):
         if arr[i]:
-            for j in range(2*i ,n ,i ):
+            for j in range(2 * i, n, i):
                 arr[j] = False
-    cr =[0]*n
+    cr = [0] * n
     for i in range(n):
         if arr[i]:
-            c+=1
+            c += 1
         cr[i] = c
     return cr
+
+
 cnt = s(1000001)
 for _ in range(I()):
-    x ,y = tup()
+    x, y = tup()
     if cnt[x] <= y:
-        print('Chef')
+        print("Chef")
     else:
-        print('Chef')
-
-
+        print("Chef")
 
 
 # for _ in range(I()):
@@ -59,9 +68,6 @@ for _ in range(I()):
 #         ln, lm, l  = len(ht[a]),  len(ht[b]) , len(ht[a] & ht[b])
 #         ans+=(ln - l ) * (lm - l)
 #     print(ans*2)
-
-
-
 
 
 # def mulgames():
@@ -85,36 +91,5 @@ for _ in range(I()):
 #     mulgames()
 
 
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if localsys:
-    print("\n\nTime Elased :",time.time() - start_time,"seconds")
-
-
+    print("\n\nTime Elased :", time.time() - start_time, "seconds")

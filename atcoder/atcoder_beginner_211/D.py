@@ -1,11 +1,16 @@
 import sys
 
-def input(): return sys.stdin.readline().rstrip("\r\n")
 
-def maps(): return [int(i) for i in input().split()]
+def input():
+    return sys.stdin.readline().rstrip("\r\n")
+
+
+def maps():
+    return [int(i) for i in input().split()]
 
 
 from _collections import deque
+
 mod = int(1e9 + 7)
 
 n, m = maps()

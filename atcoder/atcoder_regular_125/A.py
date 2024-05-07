@@ -77,7 +77,7 @@ for _ in range(T):
 	s = [*maps()]
 	t = [*maps()]
 
-	if len(set(t)) == 1 
+	if len(set(t)) == 1
 		print(m) if s[0] == t[0] else print(-1)
 
 	else:

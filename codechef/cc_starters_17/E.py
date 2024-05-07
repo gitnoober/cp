@@ -1,20 +1,14 @@
-
 # DON'T SUBMIT UNLESS YOU'RE ABSOLUTELY SURE OR ATLEAST 70 % SURE !!!
 
-import sys
 import pprint
 import logging
 from logging import getLogger
-import array
-import collections
 import io
 import os
-import heapq
-import bisect
 
 # sys.setrecursionlimit(10 ** 9)
 
-inf = float('inf')
+inf = float("inf")
 maxn = int(1e5) + 10
 
 
@@ -45,24 +39,25 @@ def solve():
             b.append(i)
 
     if k <= len(b):
-        print('YES')
+        print("YES")
         for i in range(k):
-            print(b[i], end=' ')
+            print(b[i], end=" ")
         print()
 
     elif k >= n - len(b):
         for i in range(k - (n - len(b))):
             a.add(b.pop())
-        print('YES')
+        print("YES")
         print(*a)
     else:
-        print('NO')
+        print("NO")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     input = io.BytesIO(os.read(0, os.fstat(0).st_size)).readline
 
-    def linp(): return [int(i) for i in input().split()]
+    def linp():
+        return [int(i) for i in input().split()]
 
     logging.basicConfig(
         format="%(message)s",
@@ -72,7 +67,7 @@ if __name__ == '__main__':
     logger.setLevel(logging.INFO)
 
     def debug(msg, *args):
-        logger.info(f'{msg}={pprint.pformat(args)}')
+        logger.info(f"{msg}={pprint.pformat(args)}")
 
     for __ in range(*linp()):
         solve()

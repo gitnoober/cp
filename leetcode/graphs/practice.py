@@ -1,10 +1,5 @@
 from collections import defaultdict
 
-import math
-import os
-import random
-import re
-import sys
 
 #
 # Complete the 'vanity' function below.

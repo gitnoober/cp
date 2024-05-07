@@ -1,10 +1,13 @@
 import sys
-sys.setrecursionlimit(10 ** 5)
+
+sys.setrecursionlimit(10**5)
 
 input = sys.stdin.buffer.readline
 
 
 ANS = []
+
+
 def solve():
 
     n = int(input())
@@ -43,4 +46,4 @@ while tc:
     tc -= 1
     solve()
 
-print('\n'.join(map(str, ANS)))
+print("\n".join(map(str, ANS)))

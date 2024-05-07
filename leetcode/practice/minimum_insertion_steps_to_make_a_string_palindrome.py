@@ -3,7 +3,7 @@ from functools import lru_cache
 
 class Solution:
     def minInsertions(self, s: str) -> int:
-        d = 
+        d =
 
         @lru_cache(None)
         def recur(s, cnt):
