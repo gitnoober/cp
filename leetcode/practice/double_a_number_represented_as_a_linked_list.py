@@ -19,7 +19,7 @@ class Solution:
         carry = 0
         prev = self.reverse_ll(head)
         p = prev
-        pp = p
+        prev_prev = p
         while p:
             t = p.val * 2
             tot = t + carry
@@ -29,11 +29,8 @@ class Solution:
             else:
                 p.val = tot % 10
                 carry = t // 10
-            pp = p
+            prev_prev = p
             p = p.next
         if carry:
-            pp.next = ListNode(carry)
+            prev_prev.next = ListNode(carry)
         return self.reverse_ll(prev)
-
-        # 1 8 9 --> 9 8 1
-        # 8 7 3
