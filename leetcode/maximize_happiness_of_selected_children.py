@@ -6,5 +6,5 @@ class Solution:
         happiness.sort(reverse=True)
         ans = 0
         for i in range(k):
-            ans += happiness[i] - i
+            ans += max(0, happiness[i] - i)
         return ans
